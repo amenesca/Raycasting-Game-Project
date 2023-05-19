@@ -6,7 +6,7 @@
 /*   By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:36:05 by amenesca          #+#    #+#             */
-/*   Updated: 2023/05/18 20:10:01 by amenesca         ###   ########.fr       */
+/*   Updated: 2023/05/19 18:03:30 by amenesca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,23 @@ int	ft_strcmp(const char *s1, const char *s2)
 		i++;
 	}
 	return (0);
+}
+
+char	*free_strtrim(char const *s1, char const *set) //
+{
+	size_t	len;
+	char	*trim;
+	char	*for_free;
+
+	for_free = s1;
+	if (!s1 || !set)
+		return (NULL);
+	while (*s1 && ft_strchr(set, *s1))
+		s1++;
+	len = ft_strlen(s1);
+	while (len && ft_strchr(set, s1[len]))
+		len--;
+	trim = ft_substr((char *) s1, 0, len + 1);
+	free(for_free);
+	return (trim);
 }

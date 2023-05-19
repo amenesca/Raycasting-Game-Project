@@ -7,7 +7,7 @@ void print_map(char **map_read)
 
 	while (map_read[i])
 	{
-		printf("%s", map_read[i]);
+		printf("%s\n", map_read[i]);
 		i++;
 	}
 }

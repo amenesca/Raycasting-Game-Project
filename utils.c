@@ -6,7 +6,7 @@
 /*   By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:36:05 by amenesca          #+#    #+#             */
-/*   Updated: 2023/05/19 18:03:30 by amenesca         ###   ########.fr       */
+/*   Updated: 2023/05/22 13:23:46 by amenesca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*free_strtrim(char const *s1, char const *set) //
 	char	*trim;
 	char	*for_free;
 
-	for_free = s1;
+	for_free = (char *)s1;
 	if (!s1 || !set)
 		return (NULL);
 	while (*s1 && ft_strchr(set, *s1))

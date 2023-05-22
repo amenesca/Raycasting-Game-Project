@@ -25,22 +25,31 @@ int	count_lines(char *map_path)
 	return (i);
 }
 
-char **read_map(char *map_path)
+void remove_endl(char **map_read)
+{
+	int i;
+
+	i = -1;
+
+	while(map_read[++i])
+		map_read[i] = free_strtrim(map_read[i], "\n");
+}
+
+void read_map(char *map_path, t_map *map)
 {
 	int lines;
-	char **map_read;
 	int i;
 	int fd;
 
 	i = 0;
 	fd = open(map_path, O_RDONLY);
 	lines = count_lines(map_path);
-	map_read = (char **)malloc(sizeof(char *) * lines + 1);
+	map->map_info = (char **)malloc(sizeof(char *) * lines + 1);
 	while (i < lines)
 	{
-		map_read[i] = get_next_line(fd);
+		map->map_info[i] = get_next_line(fd);
 		i++;
 	}
 	close(fd);
-	return (map_read);
+	remove_endl(map->map_info);
 }

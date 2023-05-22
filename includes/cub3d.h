@@ -6,7 +6,7 @@
 /*   By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:07:36 by amenesca          #+#    #+#             */
-/*   Updated: 2023/05/19 17:27:37 by amenesca         ###   ########.fr       */
+/*   Updated: 2023/05/22 13:34:44 by amenesca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,13 @@ typedef struct s_map {
 int	treat_argc(int argc);
 int treat_map(char *map_path);
 int	ft_strcmp(const char *s1, const char *s2);
-int	count_lines(char *map_path);
-char **read_map(char *map_path);
+
+// Leitura do mapa
+
+int		count_lines(char *map_path);
+char	*free_strtrim(char const *s1, char const *set);
+void	remove_endl(char **map_read);
+void	read_map(char *map_path, t_map *map);
 
 
 // ****** Funcoes para testar coisas ******

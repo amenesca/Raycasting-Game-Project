@@ -1,18 +1,5 @@
 #include "cub3d.h"
 
-void free_array(char **array)
-{
-	int i; 
-
-	i = 0;
-	while (array[i] != NULL)
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
-}
-
 int	count_lines(char *map_path)
 {
 	int	i;

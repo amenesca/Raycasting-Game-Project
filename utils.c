@@ -6,7 +6,7 @@
 /*   By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:36:05 by amenesca          #+#    #+#             */
-/*   Updated: 2023/05/22 15:24:32 by amenesca         ###   ########.fr       */
+/*   Updated: 2023/05/22 16:14:14 by amenesca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,17 @@ char	*ft_strdup_no_endl(const char *s1)
 	}
 	s[i] = '\0';
 	return ((char *)(s));
+}
+
+void free_array(char **array)
+{
+	int i; 
+
+	i = 0;
+	while (array[i] != NULL)
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
 }

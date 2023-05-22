@@ -6,7 +6,7 @@
 /*   By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:07:36 by amenesca          #+#    #+#             */
-/*   Updated: 2023/05/22 15:21:59 by amenesca         ###   ########.fr       */
+/*   Updated: 2023/05/22 16:14:24 by amenesca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int		treat_map(char *map_path);
 // Utils
 int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strdup_no_endl(const char *s1);
+void	free_array(char **array);
 
 // Leitura do mapa
 

@@ -6,7 +6,7 @@
 /*   By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:07:42 by amenesca          #+#    #+#             */
-/*   Updated: 2023/05/22 13:43:18 by amenesca         ###   ########.fr       */
+/*   Updated: 2023/05/22 15:36:26 by amenesca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int main(int argc, char *argv[])
 	read_map(argv[1], &map);
 	if (map.map_read == NULL)
 		return (-1);
-	print_map(map.map_read);
+	print_array(map.map_read);
 	
+	free_array(map.map_read);
 	return (0);
 }

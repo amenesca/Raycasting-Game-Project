@@ -6,7 +6,7 @@
 /*   By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:07:36 by amenesca          #+#    #+#             */
-/*   Updated: 2023/05/22 14:36:48 by amenesca         ###   ########.fr       */
+/*   Updated: 2023/05/22 15:21:59 by amenesca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,24 @@ typedef struct s_map {
 	
 } t_map;
 
-int	treat_argc(int argc);
-int treat_map(char *map_path);
-int	ft_strcmp(const char *s1, const char *s2);
+int		treat_argc(int argc);
+int		treat_map(char *map_path);
+
+// Utils
+int		ft_strcmp(const char *s1, const char *s2);
+char	*ft_strdup_no_endl(const char *s1);
 
 // Leitura do mapa
 
+void	free_array(char **array);
 int		count_lines(char *map_path);
-char	*free_strtrim(char const *s1, char const *set);
-void	remove_endl(char **map_read);
+void	remove_endl(t_map *map, int lines);
 void	read_map(char *map_path, t_map *map);
+void	get_textures_path(t_map *map);
 
 
 // ****** Funcoes para testar coisas ******
 
-void print_map(char **map_read);
+void	print_array(char **array);
 
 #endif

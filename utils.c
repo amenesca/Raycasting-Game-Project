@@ -6,7 +6,7 @@
 /*   By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:36:05 by amenesca          #+#    #+#             */
-/*   Updated: 2023/05/22 13:23:46 by amenesca         ###   ########.fr       */
+/*   Updated: 2023/05/22 15:24:32 by amenesca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,20 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return (0);
 }
 
-char	*free_strtrim(char const *s1, char const *set) //
+char	*ft_strdup_no_endl(const char *s1)
 {
-	size_t	len;
-	char	*trim;
-	char	*for_free;
+	size_t	i;
+	char	*s;
 
-	for_free = (char *)s1;
-	if (!s1 || !set)
+	s = (char *) malloc((ft_strlen(s1) + 1) * sizeof(char));
+	if (!s)
 		return (NULL);
-	while (*s1 && ft_strchr(set, *s1))
-		s1++;
-	len = ft_strlen(s1);
-	while (len && ft_strchr(set, s1[len]))
-		len--;
-	trim = ft_substr((char *) s1, 0, len + 1);
-	free(for_free);
-	return (trim);
+	i = 0;
+	while (s1[i] != '\n' && s1[i] != '\0')
+	{
+		s[i] = s1[i];
+		i++;
+	}
+	s[i] = '\0';
+	return ((char *)(s));
 }

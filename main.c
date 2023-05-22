@@ -24,6 +24,8 @@ int main(int argc, char *argv[])
 	if (map.map_read == NULL)
 		return (-1);
 	print_array(map.map_read);
+//	write(1, "\n\n\n", 3);
+//	print_array(map.textures);
 	
 	free_array(map.map_read);
 	return (0);

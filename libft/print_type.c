@@ -15,10 +15,8 @@
 int	print_type(va_list argptr, char type)
 {
 	int		len;
-	char	*str;
 
 	len = 0;
-	str = NULL;
 	if (type == 'c')
 		len += ft_putchar(va_arg(argptr, int));
 	else if (type == 's')

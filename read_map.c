@@ -42,26 +42,39 @@ void remove_endl(t_map *map, int lines)
 	map->map_read = map_read;
 }
 
-/*void get_textures_path(t_map *map)
+void get_textures_path(t_map *map)
 {
 	int i;
 
-	i = 0;
-	map->textures = (char **)malloc(sizeof(char *) * 5);
+	i = -1;
 	while (map->map_read[++i] != NULL)
 	{
-		if (ft_strncmp(map->map_read[i], "NO", 3))
+		if (ft_strncmp(map->map_read[i], "NO", 2) == 0)
 			map->textures[0] = ft_strdup(map->map_read[i]);
-		else if (ft_strncmp(map->map_read[i], "SO", 3))
+		else if (ft_strncmp(map->map_read[i], "SO", 2) == 0)
 			map->textures[1] = ft_strdup(map->map_read[i]);
-		else if (ft_strncmp(map->map_read[i], "WE", 3))
+		else if (ft_strncmp(map->map_read[i], "WE", 2) == 0)
 			map->textures[2] = ft_strdup(map->map_read[i]);
-		else if (ft_strncmp(map->map_read[i], "EA", 3))
+		else if (ft_strncmp(map->map_read[i], "EA", 2) == 0)
 			map->textures[3] = ft_strdup(map->map_read[i]);
-		i++;
 	}
 	map->textures[4] = NULL;
-}*/
+}
+
+void get_colors(t_map *map)
+{
+	int i;
+
+	i = -1;
+	while (map->map_read[++i] != NULL)
+	{
+		if (ft_strncmp(map->map_read[i], "F ", 2) == 0)
+			map->colors[0] = ft_strdup(map->map_read[i]);
+		else if (ft_strncmp(map->map_read[i], "C ", 2) == 0)
+			map->colors[1] = ft_strdup(map->map_read[i]);
+	}
+	map->colors[2] = NULL;
+}
 
 void read_map(char *map_path, t_map *map)
 {
@@ -81,4 +94,6 @@ void read_map(char *map_path, t_map *map)
 	map->map_read[i] = NULL;
 	close(fd);
 	remove_endl(map, lines);
+	get_textures_path(map);
+	get_colors(map);
 }

@@ -16,10 +16,16 @@
 
 # include "../libft/libft.h"
 # include <fcntl.h>
+# include <stdio.h>
+# define NO 0
+# define SO 1
+# define WE 2
+# define EA 3
 
 typedef struct s_map {
 	char **map_read;
-	char **textures;
+	char *textures[5];
+	char *colors[3];
 	
 } t_map;
 

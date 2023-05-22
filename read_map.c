@@ -44,12 +44,12 @@ void read_map(char *map_path, t_map *map)
 	i = 0;
 	fd = open(map_path, O_RDONLY);
 	lines = count_lines(map_path);
-	map->map_info = (char **)malloc(sizeof(char *) * lines + 1);
+	map->map_read = (char **)malloc(sizeof(char *) * lines + 1);
 	while (i < lines)
 	{
-		map->map_info[i] = get_next_line(fd);
+		map->map_read[i] = get_next_line(fd);
 		i++;
 	}
 	close(fd);
-	remove_endl(map->map_info);
+	remove_endl(map->map_read);
 }

@@ -6,7 +6,7 @@
 /*   By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:07:36 by amenesca          #+#    #+#             */
-/*   Updated: 2023/05/22 13:34:44 by amenesca         ###   ########.fr       */
+/*   Updated: 2023/05/22 14:36:48 by amenesca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@
 # include <fcntl.h>
 
 typedef struct s_map {
-	char **map_info;
+	char **map_read;
+	char **textures;
+	
 } t_map;
 
 int	treat_argc(int argc);

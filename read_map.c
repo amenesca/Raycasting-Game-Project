@@ -47,16 +47,17 @@ void get_textures_path(t_map *map)
 	int i;
 
 	i = -1;
+	map->textures = (char **)malloc(sizeof(char *) * 5);
 	while (map->file_read[++i] != NULL)
 	{
-		if (ft_strncmp(map->file_read[i], "NO ", 3) == 0)
-			map->textures[0] = ft_strdup(map->file_read[i]);
-		else if (ft_strncmp(map->file_read[i], "SO ", 3) == 0)
-			map->textures[1] = ft_strdup(map->file_read[i]);
-		else if (ft_strncmp(map->file_read[i], "WE ", 3) == 0)
-			map->textures[2] = ft_strdup(map->file_read[i]);
-		else if (ft_strncmp(map->file_read[i], "EA ", 3) == 0)
-			map->textures[3] = ft_strdup(map->file_read[i]);
+		if (ft_strnstr(map->file_read[i], "NO ", ft_strlen(map->file_read[i])) != NULL)
+			map->textures[NO] = ft_strdup(map->file_read[i]);
+		else if (ft_strnstr(map->file_read[i], "SO ", ft_strlen(map->file_read[i])) != NULL)
+			map->textures[SO] = ft_strdup(map->file_read[i]);
+		else if (ft_strnstr(map->file_read[i], "WE ", ft_strlen(map->file_read[i])) != NULL)
+			map->textures[WE] = ft_strdup(map->file_read[i]);
+		else if (ft_strnstr(map->file_read[i], "EA ", ft_strlen(map->file_read[i])) != NULL)
+			map->textures[EA] = ft_strdup(map->file_read[i]);
 	}
 	map->textures[4] = NULL;
 }
@@ -66,11 +67,12 @@ void get_colors(t_map *map)
 	int i;
 
 	i = -1;
+	map->colors = (char **)malloc(sizeof(char *) * 3);
 	while (map->file_read[++i] != NULL)
 	{
-		if (ft_strncmp(map->file_read[i], "F ", 2) == 0)
+		if (ft_strnstr(map->file_read[i], "F ", ft_strlen(map->file_read[i])) != NULL)
 			map->colors[0] = ft_strdup(map->file_read[i]);
-		else if (ft_strncmp(map->file_read[i], "C ", 2) == 0)
+		else if (ft_strnstr(map->file_read[i], "C ", ft_strlen(map->file_read[i])) != NULL)
 			map->colors[1] = ft_strdup(map->file_read[i]);
 	}
 	map->colors[2] = NULL;
@@ -79,9 +81,12 @@ void get_colors(t_map *map)
 
 static int is_element(char *line)
 {
-	if (ft_strncmp(line, "NO ", 3) == 0 || ft_strncmp(line, "SO ", 3) == 0\
-	|| ft_strncmp(line, "WE ", 3) == 0 || ft_strncmp(line, "EA ", 3) == 0\
-	|| ft_strncmp(line, "F ", 2) == 0 || ft_strncmp(line, "C ", 2) == 0)
+	if (ft_strnstr(line, "NO ",  ft_strlen(line)) != NULL\
+	 || ft_strnstr(line, "SO ", ft_strlen(line)) != NULL\
+	|| ft_strnstr(line, "WE ", ft_strlen(line)) != NULL\
+	 || ft_strnstr(line, "EA ", ft_strlen(line)) != NULL\
+	|| ft_strnstr(line, "F ", ft_strlen(line)) != NULL\
+	 || ft_strnstr(line, "C ", ft_strlen(line)) != NULL)
 	{
 		return (1);
 	}

@@ -1,6 +1,6 @@
 #include "includes/cub3d.h"
 
-int treat_argc(int argc)
+int		treat_argc(int argc)
 {
 	if (argc != 2)
 	{

@@ -6,7 +6,7 @@
 /*   By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:07:36 by amenesca          #+#    #+#             */
-/*   Updated: 2023/05/22 16:14:24 by amenesca         ###   ########.fr       */
+/*   Updated: 2023/05/23 14:45:04 by amenesca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,31 @@
 # define CUB3D_H
 
 # include "../libft/libft.h"
+# include "./defines.h"
 # include <fcntl.h>
-# include <stdio.h>
-# define NO 0
-# define SO 1
-# define WE 2
-# define EA 3
-
-typedef struct s_map {
+# include <stdio.h> // remover depois
+typedef struct s_map
+{
 	char	**file_read;
 	int		file_lines;
-	char	*textures[5];
-	char	*colors[3];
+	char	**textures;
+	char	**colors;
 	char	**map;
 } t_map;
+typedef struct s_mlxdata
+{
+	void *mlx;
+	void *mlx_win;
+	void *img;
+	char *addr;
+	int bits;
+	int line;
+	int endian;
+} t_mlxdata;
+typedef struct s_data
+{
+	
+} t_data;
 
 int		treat_argc(int argc);
 int		treat_map(char *map_path);

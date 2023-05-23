@@ -6,7 +6,7 @@
 /*   By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:07:36 by amenesca          #+#    #+#             */
-/*   Updated: 2023/05/23 18:02:16 by amenesca         ###   ########.fr       */
+/*   Updated: 2023/05/23 19:27:17 by amenesca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct s_map
 	int		file_lines;
 	char	**textures;
 	char	**colors;
+	int		*ceiling;
+	int		*floor;
 	char	**map;
 } t_map;
 typedef struct s_mlxdata

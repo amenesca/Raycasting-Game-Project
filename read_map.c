@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_map.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/23 19:39:38 by amenesca          #+#    #+#             */
+/*   Updated: 2023/05/23 19:56:59 by amenesca         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 int	count_lines(char *map_path)
@@ -140,8 +152,7 @@ void get_map(t_map *map)
 		i++;
 		if (flag == 6)
 		{
-			while (map->file_read[i][0] == '\0'\
-			 && map->file_read[i] != NULL)
+			while (map->file_read[i][0] == '\0' && map->file_read[i] != NULL)
 				i++;
 			break;
 		}
@@ -162,7 +173,13 @@ int	read_map(char *map_path, t_map *map)
 	i = 0;
 	fd = open(map_path, O_RDONLY);
 	map->file_lines = count_lines(map_path);
-	map->file_read = (char **)ft_calloc(sizeof(char *), (map->file_lines + 1));
+	if (map->file_lines == 0)
+	{
+		write(2, "cub3d: Error: Empty file\n", 26);
+		return (1);
+	}
+	map->file_read = (char **)ft_calloc(sizeof(char *),\
+ (map->file_lines + 1));
 	while (i < map->file_lines)
 	{
 		map->file_read[i] = get_next_line(fd);

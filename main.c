@@ -6,7 +6,7 @@
 /*   By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:07:42 by amenesca          #+#    #+#             */
-/*   Updated: 2023/05/23 15:40:15 by maragao          ###   ########.rio      */
+/*   Updated: 2023/05/23 16:00:22 by maragao          ###   ########.rio      */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ int	validate_elements(t_map *map)
 	int i;
 
 	i = 0;
-	while (i < 5)
+	while (i < 4)
 	{
 		if (map->textures[i] == NULL)
 			return (write(2, "cub3d: Error: Wrong textures\n", 29));
 		i++;
 	}
 	i = 0;
-	while (i < 3)
+	while (i < 2)
 	{
 		if (map->colors[i] == NULL)
 			return (write(2, "cub3d: Error: Wrong colors\n", 27));
@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
 		return (-1);
 	print_array(map.file_read);
 	
-	write(1, "\n\n\n", 3);
+//	write(1, "\n\n\n", 3);
 	
 	print_array(map.textures);
 	print_array(map.colors);

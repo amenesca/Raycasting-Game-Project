@@ -6,7 +6,7 @@
 /*   By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:07:36 by amenesca          #+#    #+#             */
-/*   Updated: 2023/05/23 14:45:04 by amenesca         ###   ########.fr       */
+/*   Updated: 2023/05/23 15:39:54 by maragao          ###   ########.rio      */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,13 @@ void	free_array(char **array);
 void	free_array(char **array);
 int		count_lines(char *map_path);
 void	remove_endl(t_map *map);
-void	read_map(char *map_path, t_map *map);
-void	get_textures_path(t_map *map);
+int		read_map(char *map_path, t_map *map);
+int		get_textures(t_map *map);
+int		get_colors(t_map *map);
 
+// main
+int	init_pointers(t_map *map);
+int	validate_elements(t_map *map);
 
 // ****** Funcoes para testar coisas ******
 

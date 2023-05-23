@@ -42,40 +42,71 @@ void remove_endl(t_map *map)
 	map->file_read = map_read;
 }
 
-void get_textures_path(t_map *map)
+int	 get_textures_path(t_map *map)
 {
 	int i;
 
 	i = -1;
-	map->textures = (char **)ft_calloc(sizeof(char *), 5);
 	while (map->file_read[++i] != NULL)
 	{
 		if (ft_strnstr(map->file_read[i], "NO ", ft_strlen(map->file_read[i])) != NULL)
-			map->textures[NO] = ft_strdup(map->file_read[i]);
+		{
+			if (map->textures[NO] == NULL)
+				map->textures[NO] = ft_strdup(map->file_read[i]);
+			else
+				return (-1);
+		}
 		else if (ft_strnstr(map->file_read[i], "SO ", ft_strlen(map->file_read[i])) != NULL)
-			map->textures[SO] = ft_strdup(map->file_read[i]);
+		{
+			if (map->textures[SO] == NULL)
+				map->textures[SO] = ft_strdup(map->file_read[i]);
+			else
+				return (-1);
+		}
 		else if (ft_strnstr(map->file_read[i], "WE ", ft_strlen(map->file_read[i])) != NULL)
-			map->textures[WE] = ft_strdup(map->file_read[i]);
+		{
+			if (map->textures[WE] == NULL)
+				map->textures[WE] = ft_strdup(map->file_read[i]);
+			else
+				return (-1);
+		}
 		else if (ft_strnstr(map->file_read[i], "EA ", ft_strlen(map->file_read[i])) != NULL)
-			map->textures[EA] = ft_strdup(map->file_read[i]);
+		{
+			if (map->textures[EA] == NULL)
+				map->textures[EA] = ft_strdup(map->file_read[i]);
+			else
+				return (-1);
+		}
 	}
 	map->textures[4] = NULL;
+	return (0);
 }
 
-void get_colors(t_map *map)
+int	get_colors(t_map *map)
 {
 	int i;
 
 	i = -1;
-	map->colors = (char **)ft_calloc(sizeof(char *), 3);
 	while (map->file_read[++i] != NULL)
 	{
 		if (ft_strnstr(map->file_read[i], "F ", ft_strlen(map->file_read[i])) != NULL)
-			map->colors[0] = ft_strdup(map->file_read[i]);
+		{
+			if (map->colors[0] == NULL)
+				map->colors[0] = ft_strdup(map->file_read[i]);
+			else
+				return (-1);
+
+		}
 		else if (ft_strnstr(map->file_read[i], "C ", ft_strlen(map->file_read[i])) != NULL)
-			map->colors[1] = ft_strdup(map->file_read[i]);
+		{
+			if (map->colors[1] == NULL)
+				map->colors[1] = ft_strdup(map->file_read[i]);
+			else
+				return (-1);
+		}
 	}
 	map->colors[2] = NULL;
+	return (0);
 }
 
 
@@ -123,7 +154,7 @@ void get_map(t_map *map)
 	map->map[j] = NULL;
 }
 
-void read_map(char *map_path, t_map *map)
+int	read_map(char *map_path, t_map *map)
 {
 	int i;
 	int fd;
@@ -131,7 +162,7 @@ void read_map(char *map_path, t_map *map)
 	i = 0;
 	fd = open(map_path, O_RDONLY);
 	map->file_lines = count_lines(map_path);
-	map->file_read = (char **)f_calloc(sizeof(char *), (map->file_lines + 1));
+	map->file_read = (char **)ft_calloc(sizeof(char *), (map->file_lines + 1));
 	while (i < map->file_lines)
 	{
 		map->file_read[i] = get_next_line(fd);
@@ -140,7 +171,13 @@ void read_map(char *map_path, t_map *map)
 	map->file_read[i] = NULL;
 	close(fd);
 	remove_endl(map);
-	get_textures_path(map);
-	get_colors(map);
+	init_pointers(map);
+	if (get_textures_path(map) == -1)
+		return (write(2, "cub3d: Error: Wrong textures\n", 29));
+	if (get_colors(map) == -1)
+		return (write(2, "cub3d: Error: Wrong colors\n", 27));
+	if (validate_elements(map) > 0)
+		return (1);
 	get_map(map);
+	return (0);
 }

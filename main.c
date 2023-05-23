@@ -21,12 +21,15 @@ int main(int argc, char *argv[])
 	if (treat_map(argv[1]) == -1)
 		return (-1);
 	read_map(argv[1], &map);
-	if (map.map_read == NULL)
+	if (map.file_read == NULL)
 		return (-1);
-	print_array(map.map_read);
-//	write(1, "\n\n\n", 3);
-//	print_array(map.textures);
+	print_array(map.file_read);
+	write(1, "\n\n\n", 3);
+	print_array(map.textures);
+	print_array(map.colors);
+	print_array(map.map);
 	
-	free_array(map.map_read);
+	free_array(map.file_read);
+	free_array(map.map);
 	return (0);
 }

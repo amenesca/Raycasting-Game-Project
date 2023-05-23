@@ -23,10 +23,11 @@
 # define EA 3
 
 typedef struct s_map {
-	char **map_read;
-	char *textures[5];
-	char *colors[3];
-	
+	char	**file_read;
+	int		file_lines;
+	char	*textures[5];
+	char	*colors[3];
+	char	**map;
 } t_map;
 
 int		treat_argc(int argc);
@@ -41,7 +42,7 @@ void	free_array(char **array);
 
 void	free_array(char **array);
 int		count_lines(char *map_path);
-void	remove_endl(t_map *map, int lines);
+void	remove_endl(t_map *map);
 void	read_map(char *map_path, t_map *map);
 void	get_textures_path(t_map *map);
 

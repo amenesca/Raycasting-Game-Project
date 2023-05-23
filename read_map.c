@@ -31,7 +31,7 @@ void remove_endl(t_map *map)
 	char **map_read;
 
 	i = 0;
-	map_read = (char **)malloc(sizeof(char *) * (map->file_lines + 1));
+	map_read = (char **)ft_calloc( (map->file_lines + 1), sizeof(char *));
 	while (i < map->file_lines)
 	{
 		map_read[i] = ft_strdup_no_endl(map->file_read[i]);
@@ -47,7 +47,7 @@ void get_textures_path(t_map *map)
 	int i;
 
 	i = -1;
-	map->textures = (char **)malloc(sizeof(char *) * 5);
+	map->textures = (char **)ft_calloc(sizeof(char *), 5);
 	while (map->file_read[++i] != NULL)
 	{
 		if (ft_strnstr(map->file_read[i], "NO ", ft_strlen(map->file_read[i])) != NULL)
@@ -67,7 +67,7 @@ void get_colors(t_map *map)
 	int i;
 
 	i = -1;
-	map->colors = (char **)malloc(sizeof(char *) * 3);
+	map->colors = (char **)ft_calloc(sizeof(char *), 3);
 	while (map->file_read[++i] != NULL)
 	{
 		if (ft_strnstr(map->file_read[i], "F ", ft_strlen(map->file_read[i])) != NULL)
@@ -116,7 +116,7 @@ void get_map(t_map *map)
 		}
 	}
 	len = map->file_lines - i;
-	map->map = (char **)malloc(sizeof(char *) * (len + 1));
+	map->map = (char **)ft_calloc(sizeof(char *), (len + 1));
 	j = 0;
 	while (j < len)
 		map->map[j++] = ft_strdup(map->file_read[i++]);
@@ -131,7 +131,7 @@ void read_map(char *map_path, t_map *map)
 	i = 0;
 	fd = open(map_path, O_RDONLY);
 	map->file_lines = count_lines(map_path);
-	map->file_read = (char **)malloc(sizeof(char *) * (map->file_lines + 1));
+	map->file_read = (char **)f_calloc(sizeof(char *), (map->file_lines + 1));
 	while (i < map->file_lines)
 	{
 		map->file_read[i] = get_next_line(fd);

@@ -6,7 +6,7 @@
 /*   By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:36:05 by amenesca          #+#    #+#             */
-/*   Updated: 2023/05/22 16:14:14 by amenesca         ###   ########.fr       */
+/*   Updated: 2023/05/23 16:12:40 by maragao          ###   ########.rio      */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ void free_array(char **array)
 		free(array[i]);
 		i++;
 	}
-	free(array);
+	if (array != NULL)
+		free(array);
 }

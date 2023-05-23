@@ -6,7 +6,7 @@
 /*   By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:07:42 by amenesca          #+#    #+#             */
-/*   Updated: 2023/05/23 16:00:22 by maragao          ###   ########.rio      */
+/*   Updated: 2023/05/23 16:13:37 by maragao          ###   ########.rio      */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	init_pointers(t_map *map)
 	int	i;
 
 	i = 0;
+	map->map = NULL;
 	map->textures = (char **)ft_calloc(sizeof(char *), 5);
 	if (map->textures == NULL)
 		return (-1);
@@ -59,16 +60,15 @@ int main(int argc, char *argv[])
 		return (-1);
 	if (treat_map(argv[1]) == -1)
 		return (-1);
+	init_pointers(&map);
 	read_map(argv[1], &map);
 	if (map.file_read == NULL)
 		return (-1);
 	print_array(map.file_read);
 	
-//	write(1, "\n\n\n", 3);
-	
 	print_array(map.textures);
 	print_array(map.colors);
-	print_array(map.map);
+//	print_array(map.map);
 	
 	free_array(map.file_read);
 	free_array(map.textures);

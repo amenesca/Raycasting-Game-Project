@@ -42,7 +42,7 @@ void remove_endl(t_map *map)
 	map->file_read = map_read;
 }
 
-int	 get_textures_path(t_map *map)
+int	 get_textures(t_map *map)
 {
 	int i;
 
@@ -172,7 +172,7 @@ int	read_map(char *map_path, t_map *map)
 	close(fd);
 	remove_endl(map);
 	init_pointers(map);
-	if (get_textures_path(map) == -1)
+	if (get_textures(map) == -1)
 		return (write(2, "cub3d: Error: Wrong textures\n", 29));
 	if (get_colors(map) == -1)
 		return (write(2, "cub3d: Error: Wrong colors\n", 27));

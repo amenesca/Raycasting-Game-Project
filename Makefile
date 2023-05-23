@@ -6,7 +6,7 @@
 #    By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:08:11 by amenesca          #+#    #+#              #
-#    Updated: 2023/05/22 15:01:34 by amenesca         ###   ########.fr        #
+#    Updated: 2023/05/23 18:00:10 by amenesca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME 		= cub3d
 
 LIBFT		= ./libft/libft.a
 
-SRCS		= main.c treat_errors.c utils.c read_map.c tests_purpose_functions.c
+SRCS		= main.c treat_errors.c utils.c read_map.c tests_purpose_functions.c\
+ split_colors.c split_textures.c
 
 OBJS		= $(SRCS:.c=.o)
 

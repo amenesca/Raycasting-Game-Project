@@ -50,7 +50,6 @@ int split_textures(t_map *map)
 		free_array(splited);
 		i++;
 	}
-	print_array(map->textures);
 	if (error_flag == 1)
 		return (1);
 	return (0);

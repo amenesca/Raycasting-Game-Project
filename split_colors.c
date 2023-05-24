@@ -1,6 +1,6 @@
 #include "./includes/cub3d.h"
 
-static int count_array(char **array)
+int count_array(char **array)
 {
 	int i;
 

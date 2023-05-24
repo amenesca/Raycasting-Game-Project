@@ -6,7 +6,7 @@
 /*   By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 19:39:38 by amenesca          #+#    #+#             */
-/*   Updated: 2023/05/24 16:01:07 by amenesca         ###   ########.fr       */
+/*   Updated: 2023/05/24 18:29:59 by amenesca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,6 +193,8 @@ int	read_map(char *map_path, t_map *map)
 	if (get_colors(map) == -1)
 		return (write(2, "cub3d: Error: Wrong colors\n", 27));
 	if (validate_elements(map) > 0)
+		return (1);
+	if (test_colors(map) > 0)
 		return (1);
 	get_map(map);
 	validate_map(map);

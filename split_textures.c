@@ -1,15 +1,5 @@
 #include "./includes/cub3d.h"
 
-static int count_array(char **array)
-{
-	int i;
-
-	i = 0;
-	while (array[i] != NULL)
-		i++;
-	return (i);
-}
-
 static int is_textures(char *line)
 {
 	if (ft_strcmp(line, "NO") == 0\

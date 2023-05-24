@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maragao <maragao@student.42.rio>           +#+  +:+       +#+        */
+/*   By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 18:21:16 by maragao           #+#    #+#             */
-/*   Updated: 2023/05/24 18:27:08 by maragao          ###   ########.rio      */
+/*   Updated: 2023/05/24 18:50:16 by amenesca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ int	validade_char(t_map *map)
 		}
 		i++;
 	}
+	if (flag_error != 1)
+		return (write(2, "cub3d: Error: Invalid map\n", 26));
 	return (0);
 }
 

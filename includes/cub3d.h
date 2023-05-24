@@ -6,7 +6,7 @@
 /*   By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:07:36 by amenesca          #+#    #+#             */
-/*   Updated: 2023/05/24 15:50:54 by amenesca         ###   ########.fr       */
+/*   Updated: 2023/05/24 18:31:22 by amenesca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,10 @@ int	validate_elements(t_map *map);
 
 // treat_errors
 
+int count_array(char **array);
 int split_textures(t_map *map);
 int split_colors(t_map *map);
+int test_colors(t_map *map);
 
 // ****** Funcoes para testar coisas ******
 

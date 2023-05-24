@@ -6,7 +6,7 @@
 /*   By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 19:39:38 by amenesca          #+#    #+#             */
-/*   Updated: 2023/05/23 19:56:59 by amenesca         ###   ########.fr       */
+/*   Updated: 2023/05/24 16:01:07 by amenesca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,6 @@ void get_map(t_map *map)
 {
 	int i;
 	int flag;
-	int len;
 	int j;
 
 	i = 0;
@@ -157,10 +156,10 @@ void get_map(t_map *map)
 			break;
 		}
 	}
-	len = map->file_lines - i;
-	map->map = (char **)ft_calloc(sizeof(char *), (len + 1));
+	map->map_height = map->file_lines - i;
+	map->map = (char **)ft_calloc(sizeof(char *), (map->map_height + 1));
 	j = 0;
-	while (j < len)
+	while (j < map->map_height)
 		map->map[j++] = ft_strdup(map->file_read[i++]);
 	map->map[j] = NULL;
 }
@@ -196,5 +195,6 @@ int	read_map(char *map_path, t_map *map)
 	if (validate_elements(map) > 0)
 		return (1);
 	get_map(map);
+	validate_map(map);
 	return (0);
 }

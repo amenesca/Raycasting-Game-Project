@@ -6,7 +6,7 @@
 /*   By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:07:36 by amenesca          #+#    #+#             */
-/*   Updated: 2023/05/23 19:27:17 by amenesca         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:50:54 by amenesca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ typedef struct s_map
 	int		*ceiling;
 	int		*floor;
 	char	**map;
+	char	**remap;
+	int		map_height;
+	int		map_widht;
 } t_map;
 typedef struct s_mlxdata
 {
@@ -59,6 +62,10 @@ void	remove_endl(t_map *map);
 int		read_map(char *map_path, t_map *map);
 int		get_textures(t_map *map);
 int		get_colors(t_map *map);
+
+// validate map
+
+int validate_map(t_map *map);
 
 // main
 int	init_pointers(t_map *map);

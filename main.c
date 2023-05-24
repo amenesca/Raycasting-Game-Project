@@ -6,7 +6,7 @@
 /*   By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:07:42 by amenesca          #+#    #+#             */
-/*   Updated: 2023/05/23 20:03:12 by amenesca         ###   ########.fr       */
+/*   Updated: 2023/05/24 16:02:01 by amenesca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@ int	init_pointers(t_map *map)
 	int	i;
 
 	i = 0;
-	map->map = NULL;
-	map->file_read = NULL;
+
 	map->textures = (char **)ft_calloc(sizeof(char *), 5);
 	if (map->textures == NULL)
 		return (-1);
@@ -87,11 +86,11 @@ int main(int argc, char *argv[])
 		free_all(&map);
 		return (-1);
 	}
-	print_array(map.file_read);
+//	print_array(map.file_read);
 	
-	print_array(map.textures);
-	print_array(map.colors);
-	print_array(map.map);
+//	print_array(map.textures);
+//	print_array(map.colors);
+//	print_array(map.map);
 
 	free_all(&map);
 	return (0);

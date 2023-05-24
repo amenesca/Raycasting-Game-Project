@@ -6,7 +6,7 @@
 /*   By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 18:21:16 by maragao           #+#    #+#             */
-/*   Updated: 2023/05/24 18:50:16 by amenesca         ###   ########.fr       */
+/*   Updated: 2023/05/24 19:04:04 by amenesca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,27 @@ static int	space_condition(t_map *map, int i, int j)
 	return (0);
 }
 
+static int	char_condition(t_map *map, int i, int j)
+{
+	if (map->remap[i][j - 1] == ' ')
+		return (write(2, "cub3d: Error: Invalid map\n", 26));
+	if (map->remap[i][j + 1] == ' ')
+		return (write(2, "cub3d: Error: Invalid map\n", 26));
+	if (map->remap[i - 1][j] == ' ')
+		return (write(2, "cub3d: Error: Invalid map\n", 26));
+	if (map->remap[i + 1][j] == ' ')
+		return (write(2, "cub3d: Error: Invalid map\n", 26));
+	if (map->remap[i - 1][j - 1] == ' ')
+		return (write(2, "cub3d: Error: Invalid map\n", 26));
+	if (map->remap[i - 1][j + 1] == ' ')
+		return (write(2, "cub3d: Error: Invalid map\n", 26));
+	if (map->remap[i + 1][j - 1] == ' ')
+		return (write(2, "cub3d: Error: Invalid map\n", 26));
+	if (map->remap[i + 1][j + 1] == ' ')
+		return (write(2, "cub3d: Error: Invalid map\n", 26));
+	return (0);
+}
+
 int	validate_space(t_map *map)
 {
 	int	i;
@@ -138,6 +159,11 @@ int	validate_space(t_map *map)
 			if (map->remap[i][j] == ' ')
 			{
 				if (space_condition(map, i, j) != 0)
+					return (1);
+			}
+			if (is_valid_char(map->remap[i][j]) == 2)
+			{
+				if (char_condition(map, i, j) != 0)
 					return (1);
 			}
 			j++;

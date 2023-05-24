@@ -36,7 +36,6 @@ void get_map_widht(t_map *map)
 		i++;
 	}
 	map->map_widht += 2;
-	printf("\n\nmap->map_widht: %d, map->map_height %d\n\n", map->map_widht, map->map_height);
 }
 
 void fill_out_spaces(t_map *map)
@@ -59,6 +58,5 @@ int validate_map(t_map *map)
 {
 	get_map_widht(map);
 	fill_out_spaces(map);
-	print_array(map->remap);
 	return (0);
 }

@@ -1,4 +1,4 @@
-#include "./includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 static int is_textures(char *line)
 {
@@ -12,7 +12,7 @@ static int is_textures(char *line)
 	return (0);
 }
 
-int validate_textures(char **texture)
+static int validate_textures(char **texture)
 {
 	if (is_textures(texture[0]) && count_array(texture) == 2)
 		return (0);

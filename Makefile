@@ -14,8 +14,10 @@ NAME 		= cub3d
 
 LIBFT		= ./libft/libft.a
 
-SRCS		= main.c treat_errors.c utils.c read_map.c tests_purpose_functions.c\
- split_colors.c split_textures.c validate_map.c test_colors.c
+SRCS		= ./sources/main.c treat_args_errors.c utils.c tests_purpose_functions.c\
+ ./sources/read_get_validate/get_colors_textures.c ./sources/read_get_validate/read_map.c ./sources/read_get_validate/validate_colors_textures.c\
+ ./sources/read_get_validate/split_colors.c ./sources/read_get_validate/split_textures.c ./sources/read_get_validate/validate_map.c\
+ ./sources/read_get_validate/test_colors.c ./sources/read_get_validate/get_map.c ./sources/read_get_validate/get_n_validate.c
 
 OBJS		= $(SRCS:.c=.o)
 

@@ -63,3 +63,13 @@ void free_array(char **array)
 	if (array != NULL)
 		free(array);
 }
+
+int count_array(char **array)
+{
+	int i;
+
+	i = 0;
+	while (array[i] != NULL)
+		i++;
+	return (i);
+}

@@ -1,14 +1,4 @@
-#include "./includes/cub3d.h"
-
-int count_array(char **array)
-{
-	int i;
-
-	i = 0;
-	while (array[i] != NULL)
-		i++;
-	return (i);
-}
+#include "../../includes/cub3d.h"
 
 static int is_colors(char *line)
 {
@@ -20,7 +10,7 @@ static int is_colors(char *line)
 	return (0);
 }
 
-int validate_colors(char **color)
+static int validate_colors(char **color)
 {
 	if (is_colors(color[0]) && count_array(color) == 2)
 		return (0);

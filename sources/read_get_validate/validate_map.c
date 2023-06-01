@@ -1,16 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   validate_map.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/24 18:21:16 by maragao           #+#    #+#             */
-/*   Updated: 2023/05/24 19:04:04 by amenesca         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 static char	*ft_strdup_map(const char *s1, t_map *map, int spaces_flag)
 {

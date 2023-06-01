@@ -10,35 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub3d.h"
-
-int	validate_elements(t_map *map)
-{
-	int i;
-	int fd;
-
-	i = -1;
-	if (split_textures(map) > 0)
-		return (write(2, "cub3d: Error: Wrong textures\n", 29));
-	if (split_colors(map) > 0)
-		return (write(2, "cub3d: Error: Wrong colors\n", 27));
-	while (++i < 4)
-	{
-		if (map->textures[i] == NULL)
-			return (write(2, "cub3d: Error: Wrong textures\n", 29));
-		fd = open(map->textures[i], O_RDWR);
-		if (fd == -1)
-			return (write(2, "cub3d: Error: Textures path invalid\n", 37));
-		close(fd);
-	}
-	i = 0;
-	while (i < 2)
-	{
-		if (map->colors[i++] == NULL)
-			return (write(2, "cub3d: Error: Wrong colors\n", 27));
-	}
-	return (0);
-}
+#include "../includes/cub3d.h"
 
 int	init_pointers(t_map *map)
 {
@@ -77,22 +49,29 @@ int main(int argc, char *argv[])
 {
 	t_map map;
 
-	if (treat_argc(argc) == -1)
-		return (-1);
-	if (treat_map(argv[1]) == -1)
+	if (treat_args_error(argc, argv) != 0)
 		return (-1);
 	init_pointers(&map);
-	read_map(argv[1], &map);
+	if (read_map(argv[1], &map) != 0)
+	{
+		free_all(&map);
+		return (-1);
+	}
 	if (map.file_read == NULL)
 	{
 		free_all(&map);
 		return (-1);
 	}
-//	print_array(map.file_read);
-//	print_array(map.textures);
-//	print_array(map.colors);
-//	print_array(map.map);
-//	print_array(map.remap);
+	if (get_n_validate(&map) != 0)
+	{
+		free_all(&map);
+		return (-1);
+	}
+	print_array(map.file_read);
+	print_array(map.textures);
+	print_array(map.colors);
+	print_array(map.map);
+	print_array(map.remap);
 
 	free_all(&map);
 	return (0);

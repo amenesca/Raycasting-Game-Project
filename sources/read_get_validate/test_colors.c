@@ -1,6 +1,6 @@
-#include "includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
-int test_values(int *colors)
+static int test_values(int *colors)
 {
 	int i;
 
@@ -14,7 +14,7 @@ int test_values(int *colors)
 	return (0);
 }
 
-int only_numbers(char **color)
+static int only_numbers(char **color)
 {
 	int i;
 	int j;
@@ -35,7 +35,7 @@ int only_numbers(char **color)
 	return (0);
 }
 
-int validate_ceiling(t_map *map)
+static int validate_ceiling(t_map *map)
 {
 	int i;
 	char **color;
@@ -56,8 +56,7 @@ int validate_ceiling(t_map *map)
 		return (1);
 	return (0);
 }
-
-int validate_floor(t_map *map)
+static int validate_floor(t_map *map)
 {
 	int i;
 	char **color;

@@ -1,6 +1,6 @@
 #include "includes/cub3d.h"
 
-int		treat_argc(int argc)
+static int	treat_argc(int argc)
 {
 	if (argc != 2)
 	{
@@ -11,7 +11,7 @@ int		treat_argc(int argc)
 		return (0);
 }
 
-int	treat_map(char *map_path)
+static int	treat_map(char *map_path)
 {
 	int i;
 
@@ -23,6 +23,15 @@ int	treat_map(char *map_path)
 		if (ft_strcmp(map_path + i, ".cub") == 0)
 			return (1);
 	}
-	write(2, "cub3d: Error: Invalid map extension", 35);
+	write(2, "cub3d: Error: Invalid map extension.\n", 37);
 	return (-1);
+}
+
+int treat_args_error(int argc, char *argv[])
+{
+	if (treat_argc(argc) == -1)
+		return (-1);
+	if (treat_map(argv[1]) == -1)
+		return (-1);
+	return (0);
 }

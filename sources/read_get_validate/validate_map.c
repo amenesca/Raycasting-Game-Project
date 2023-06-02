@@ -18,7 +18,7 @@ static char	*ft_strdup_map(const char *s1, t_map *map, int spaces_flag)
 	i = -1;
 	while (++i < (int)ft_strlen(s1))
 	{
-		map_line[i + 1] = s1[i];
+		map_line[i + 2] = s1[i];
 	}
 	return ((char *)(map_line));
 }
@@ -35,22 +35,24 @@ void get_map_widht(t_map *map)
 			map->map_widht = ft_strlen(map->map[i]);
 		i++;
 	}
-	map->map_widht += 2;
+	map->map_widht += 4;
 }
 
 void fill_out_spaces(t_map *map)
 {
 	int i;
 
-	map->map_height += 2;
+	map->map_height += 4;
 	map->remap = (char **)malloc(sizeof(char *) * (map->map_height + 1));
 	i = -1;
 
 
 	map->remap[0] = ft_strdup_map(NULL, map, 1);
+	map->remap[1] = ft_strdup_map(NULL, map, 1);
 	map->remap[map->map_height - 1] = ft_strdup_map(NULL, map, 1);
+	map->remap[map->map_height - 2] = ft_strdup_map(NULL, map, 1);
 	while (map->map[++i])
-		map->remap[i + 1] = ft_strdup_map(map->map[i], map, 0);
+		map->remap[i + 2] = ft_strdup_map(map->map[i], map, 0);
 	map->remap[map->map_height] = NULL;
 }
 

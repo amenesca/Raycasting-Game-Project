@@ -43,7 +43,7 @@ void remove_endl(t_map *map)
 	char **map_read;
 
 	i = 0;
-	map_read = (char **)ft_calloc( (map->file_lines + 1), sizeof(char *));
+	map_read = (char **)ft_calloc( (map->file_lines + 2), sizeof(char *));
 	while (i < map->file_lines)
 	{
 		map_read[i] = ft_strdup_no_endl(map->file_read[i]);
@@ -68,7 +68,7 @@ int	read_map(char *map_path, t_map *map)
 		return (1);
 	}
 	map->file_read = (char **)ft_calloc(sizeof(char *),\
- (map->file_lines + 1));
+ (map->file_lines + 2));
 	while (i < map->file_lines)
 	{
 		map->file_read[i] = get_next_line(fd);

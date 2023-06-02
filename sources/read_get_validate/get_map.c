@@ -29,10 +29,15 @@ int get_map(t_map *map)
 		i++;
 		if (flag == 6)
 		{
-			while (map->file_read[i][0] == '\0' && map->file_read[i] != NULL)
+			while (map->file_read[i] != NULL && map->file_read[i][0] == '\0')
 				i++;
 			break;
 		}
+	}
+	if (map->file_read[i] == NULL)
+	{
+		write(2, "cub3d: Error: Empty map.\n", 26);
+		return (1);
 	}
 	map->map_height = map->file_lines - i;
 	map->map = (char **)ft_calloc(sizeof(char *), (map->map_height + 1));

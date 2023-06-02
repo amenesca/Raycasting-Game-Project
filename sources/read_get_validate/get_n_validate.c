@@ -12,4 +12,5 @@ int get_n_validate(t_map *map)
 		return (1);
 	if (validate_map(map) != 0)
 		return (1);
+	return (0);
 }

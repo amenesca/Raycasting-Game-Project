@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+         #
+#    By: femarque <femarque@student.42.rio>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:08:11 by amenesca          #+#    #+#              #
-#    Updated: 2023/05/24 18:30:14 by amenesca         ###   ########.fr        #
+#    Updated: 2023/06/02 18:47:31 by femarque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ $(NAME):	$(OBJS)
 				@make -C ./libft
 				@make -C $(MLX) &> /dev/null
 				cc $(OBJS) $(OFLAGS) $(LIBFT) -o $(NAME)
+				printf "COMPILATION SUCCESSFUL!\n"
 
 all:		$(NAME)
 
@@ -53,7 +54,10 @@ clean:
 fclean:		clean
 				@$(RM) $(NAME)
 				@make fclean -C ./libft
+				printf "FULLY CLEANED!\n"
 
 re:			fclean all
+
+.SILENT:
 
 .PHONY:		all clean fclean re

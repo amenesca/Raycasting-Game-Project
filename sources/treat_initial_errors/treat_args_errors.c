@@ -1,4 +1,4 @@
-#include "includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 static int	treat_argc(int argc)
 {

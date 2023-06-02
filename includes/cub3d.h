@@ -33,13 +33,13 @@ typedef struct s_map
 } t_map;
 typedef struct s_mlxdata
 {
-	void *mlx;
-	void *mlx_win;
-	void *img;
-	char *addr;
-	int bits;
-	int line;
-	int endian;
+	void	*mlx;
+	void	*mlx_win;
+	void	*img;
+	char	*addr;
+	int		bits;
+	int		line;
+	int		endian;
 } t_mlxdata;
 typedef struct s_data
 {
@@ -47,7 +47,7 @@ typedef struct s_data
 } t_data;
 
 // treat_args_error.c
-int treat_args_error(int argc, char *argv[]);
+int		treat_args_error(int argc, char *argv[]);
 
 // read_map.c
 int		count_lines(char *map_path);
@@ -55,47 +55,38 @@ void	remove_endl(t_map *map);
 int		read_map(char *map_path, t_map *map);
 
 // get_colors_textures.c
-int get_colors_textures(t_map *map);
+int		get_colors_textures(t_map *map);
 
 // validate_colors_textures.c
-int	validate_colors_textures(t_map *map);
+int		validate_colors_textures(t_map *map);
 
 // split_textures.c
-int split_textures(t_map *map);
+int		split_textures(t_map *map);
 
 // split_colors.c
-int split_colors(t_map *map);
+int		split_colors(t_map *map);
 
 // test_colors.c
-int test_colors(t_map *map);
+int		test_colors(t_map *map);
 
 //get_map.c
-int get_map(t_map *map);
+int		get_map(t_map *map);
 
-// get_n_validate
-int get_n_validate(t_map *map);
+// get_n_validate.c
+int		get_n_validate(t_map *map);
 
-// Utils
+// utils
 int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strdup_no_endl(const char *s1);
 void	free_array(char **array);
+int		count_array(char **array);
+int		init_pointers(t_map *map);
+void	free_all(t_map *map);
 
-// Leitura do mapa
+// validate_map.c
+int		validate_map(t_map *map);
 
-void	free_array(char **array);
-
-// validate map
-
-int validate_map(t_map *map);
-
-// main
-int	init_pointers(t_map *map);
-
-// treat_errors
-
-int count_array(char **array);
-
-// ****** Funcoes para testar coisas ******
+// ****** Funcoes para testar coisas ****** apagar depois
 
 void	print_array(char **array);
 

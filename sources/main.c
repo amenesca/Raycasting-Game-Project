@@ -40,6 +40,8 @@ int main(int argc, char *argv[])
 	print_array(data.map.map);
 	print_array(data.map.remap);
 
+	init_mlx(&data.mlxdata);
+	mlx_loop(data.mlxdata.mlx);
 	free_all(&data.map);
 	return (0);
 }

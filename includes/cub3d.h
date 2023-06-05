@@ -20,30 +20,31 @@
 # include <stdio.h> // remover depois
 typedef struct s_map
 {
-	char	**file_read;
-	int		file_lines;
-	char	**textures;
-	char	**colors;
-	int		*ceiling;
-	int		*floor;
-	char	**map;
-	char	**remap;
-	int		map_height;
-	int		map_widht;
+	char		**file_read;
+	int			file_lines;
+	char		**textures;
+	char		**colors;
+	int			*ceiling;
+	int			*floor;
+	char		**map;
+	char		**remap;
+	int			map_height;
+	int			map_widht;
 } t_map;
 typedef struct s_mlxdata
 {
-	void	*mlx;
-	void	*mlx_win;
-	void	*img;
-	char	*addr;
-	int		bits;
-	int		line;
-	int		endian;
+	void		*mlx;
+	void		*mlx_win;
+	void		*img;
+	char		*addr;
+	int			bits;
+	int			line;
+	int			endian;
 } t_mlxdata;
 typedef struct s_data
 {
-	
+	t_mat		map;
+	t_mlxdata	mlxdata;
 } t_data;
 
 // treat_args_error.c

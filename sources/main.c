@@ -34,12 +34,13 @@ int main(int argc, char *argv[])
 		free_all(&data.map);
 		return (-1);
 	}
-	print_array(data.map.file_read);
+	/*print_array(data.map.file_read);
 	print_array(data.map.textures);
 	print_array(data.map.colors);
 	print_array(data.map.map);
-	print_array(data.map.remap);
-
+	print_array(data.map.remap);*/
+	
+	get_info(&data);
 	init_mlx(&data.mlxdata);
 	mlx_loop(data.mlxdata.mlx);
 	free_all(&data.map);

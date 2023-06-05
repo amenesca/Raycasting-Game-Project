@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:07:36 by amenesca          #+#    #+#             */
-/*   Updated: 2023/05/24 18:31:22 by amenesca         ###   ########.fr       */
+/*   Updated: 2023/06/05 16:26:33 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,15 @@
 
 # define CUB3D_H
 
+# ifdef __linux__
+#  include "../mlx_linux/mlx.h"
+# else
+#  include "../mlx/mlx.h"
+# endif
+
 # include "../libft/libft.h"
 # include "./defines.h"
 # include <fcntl.h>
-# include "../mlx/mlx.h"
 # include <stdio.h> // remover depois
 typedef struct s_map
 {

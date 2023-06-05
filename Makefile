@@ -3,12 +3,25 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+         #
+#    By: femarque <femarque@student.42.rio>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:08:11 by amenesca          #+#    #+#              #
-#    Updated: 2023/05/24 18:30:14 by amenesca         ###   ########.fr        #
+#    Updated: 2023/06/05 16:21:59 by femarque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+detected_OS := $(shell uname)
+ifeq ($(detected_OS),Linux)
+MLXFLAGS	=	-L ./mlx_linux/ -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+RUN		=	make -s -C ./mlx_linux/
+CLEAN	=	make clean -s -C ./mlx_linux/
+CFLAGS	= 	-Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3
+else
+MLXFLAGS 	=	-L ./mlx/ -Lmlx -lmlx -framework OpenGL -framework AppKit
+RUN 	=	make -s -C ./mlx/
+CLEAN 	=	make clean -s -C ./mlx/
+CFLAGS	=	-Wall -Wextra -Werror -Imlx
+endif
 
 NAME 		= cub3d
 
@@ -22,39 +35,31 @@ SRCS		= ./sources/main.c ./sources/treat_initial_errors/treat_args_errors.c ./so
 
 OBJS		= $(SRCS:.c=.o)
 
-CFLAGS		= -Wall -Wextra -Werror
-
 RM			= rm -f
-
-UNAME		= $(shell uname)
-
-ifeq ($(UNAME), Linux)
-	OFLAGS		= $(CFLAGS) -L ./mlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
-	MLX			= ./mlx_linux
-else
-	OFLAGS		= $(CFLAGS) -L ./mlx -l mlx -framework OpenGl -framework Appkit
-	MLX			= ./mlx
-endif
 
 .c.o:
 			@cc $(CFLAGS) -c $< -o $(<:.c=.o) -I ./includes
 
 $(NAME):	$(OBJS)
 				@make -C ./libft
-				@make -C $(MLX) &> /dev/null
-				cc $(OBJS) $(OFLAGS) $(LIBFT) -o $(NAME)
+				$(RUN)
+				cc $(OBJS) $(MLXFLAGS) $(LIBFT) -o $(NAME)
+				printf "COMPILATION SUCCESSFUL!\n"
 
 all:		$(NAME)
 
 clean:
 			@$(RM) $(OBJS)
+				$(CLEAN)
 				@make clean -C ./libft
-				@make clean -C $(MLX)
 
 fclean:		clean
 				@$(RM) $(NAME)
 				@make fclean -C ./libft
+				printf "FULLY CLEANED!\n"
 
 re:			fclean all
+
+.SILENT:
 
 .PHONY:		all clean fclean re

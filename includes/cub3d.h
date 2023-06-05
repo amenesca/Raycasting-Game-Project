@@ -47,6 +47,12 @@ typedef struct s_mlxdata
 	int			line;
 	int			endian;
 } t_mlxdata;
+
+typedef struct s_raycastdat
+{
+	int			playerpos[2];
+	int			map_size[2];
+} t_raycastdat;
 typedef struct s_data
 {
 	t_map		map;

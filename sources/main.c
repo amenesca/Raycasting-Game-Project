@@ -14,33 +14,35 @@
 
 int main(int argc, char *argv[]) 
 {
-	t_map map;
+	t_data data;
 
 	if (treat_args_error(argc, argv) != 0)
 		return (-1);
-	init_pointers(&map);
-	if (read_map(argv[1], &map) != 0)
+	init_pointers(&data.map);
+	if (read_map(argv[1], &data.map) != 0)
 	{
-		free_all(&map);
+		free_all(&data.map);
 		return (-1);
 	}
-	if (map.file_read == NULL)
+	if (data.map.file_read == NULL)
 	{
-		free_all(&map);
+		free_all(&data.map);
 		return (-1);
 	}
-	if (get_n_validate(&map) != 0)
+	if (get_n_validate(&data.map) != 0)
 	{
-		free_all(&map);
+		free_all(&data.map);
 		return (-1);
 	}
-	print_array(map.file_read);
-	print_array(map.textures);
-	print_array(map.colors);
-	print_array(map.map);
-	print_array(map.remap);
+	print_array(data.map.file_read);
+	print_array(data.map.textures);
+	print_array(data.map.colors);
+	print_array(data.map.map);
+	print_array(data.map.remap);
 
-	free_all(&map);
+	init_mlx(&data.mlxdata);
+	mlx_loop(data.mlxdata.mlx);
+	free_all(&data.map);
 	return (0);
 }
 

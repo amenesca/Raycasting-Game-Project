@@ -9,7 +9,7 @@
 # define FLOOR
 # define CEILING
 
-# define widht 640
-# define height 480
+# define w 640
+# define h 480
 
 #endif

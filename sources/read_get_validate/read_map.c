@@ -62,6 +62,8 @@ int	read_map(char *map_path, t_map *map)
 	i = 0;
 	fd = open(map_path, O_RDONLY);
 	map->file_lines = count_lines(map_path);
+	if (map->file_lines == -1)
+		return (1);
 	if (map->file_lines == 0)
 	{
 		write(2, "cub3d: Error: Empty file\n", 26);

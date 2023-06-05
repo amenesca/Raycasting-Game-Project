@@ -17,6 +17,7 @@
 # include "../libft/libft.h"
 # include "./defines.h"
 # include <fcntl.h>
+# include "../mlx/mlx.h"
 # include <stdio.h> // remover depois
 typedef struct s_map
 {
@@ -43,7 +44,7 @@ typedef struct s_mlxdata
 } t_mlxdata;
 typedef struct s_data
 {
-	t_mat		map;
+	t_map		map;
 	t_mlxdata	mlxdata;
 } t_data;
 
@@ -86,6 +87,9 @@ void	free_all(t_map *map);
 
 // validate_map.c
 int		validate_map(t_map *map);
+
+//init_mlx.c
+int init_mlx(t_mlxdata *mlxdata);
 
 // ****** Funcoes para testar coisas ****** apagar depois
 

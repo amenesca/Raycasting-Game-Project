@@ -17,7 +17,8 @@ LIBFT		= ./libft/libft.a
 SRCS		= ./sources/main.c ./sources/treat_initial_errors/treat_args_errors.c ./sources/utils/utils.c ./sources/utils/utils2.c  tests_purpose_functions.c\
  ./sources/read_get_validate/get_colors_textures.c ./sources/read_get_validate/read_map.c ./sources/read_get_validate/validate_colors_textures.c\
  ./sources/read_get_validate/split_colors.c ./sources/read_get_validate/split_textures.c ./sources/read_get_validate/validate_map.c\
- ./sources/read_get_validate/test_colors.c ./sources/read_get_validate/get_map.c ./sources/read_get_validate/get_n_validate.c
+ ./sources/read_get_validate/test_colors.c ./sources/read_get_validate/get_map.c ./sources/read_get_validate/get_n_validate.c\
+ ./sources/init_mlx/init_mlx.c
 
 OBJS		= $(SRCS:.c=.o)
 

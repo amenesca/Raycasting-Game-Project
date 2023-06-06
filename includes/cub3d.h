@@ -47,10 +47,18 @@ typedef struct s_mlxdata
 	int			line;
 	int			endian;
 } t_mlxdata;
+
+typedef struct s_raycastdat
+{
+	int			map_size[2];
+	int			playerpos[2];
+	int			dir[2];
+} t_raycastdat;
 typedef struct s_data
 {
 	t_map		map;
 	t_mlxdata	mlxdata;
+	t_raycastdat raycastdat;
 } t_data;
 
 // treat_args_error.c
@@ -94,7 +102,10 @@ void	free_all(t_map *map);
 int		validate_map(t_map *map);
 
 //init_mlx.c
-int init_mlx(t_mlxdata *mlxdata);
+int		init_mlx(t_mlxdata *mlxdata);
+
+// get_info.c
+int		get_info(t_data *data);
 
 // ****** Funcoes para testar coisas ****** apagar depois
 

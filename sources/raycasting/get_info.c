@@ -1,29 +1,77 @@
 #include "../../includes/cub3d.h"
 
-int is_player(char c, t_raycastdat *raycastdat)
+static void set_plane(char c, t_raycastdat *raycastdat)
+{
+	if (c == 'N')
+	{
+		raycastdat->plane[0] = 0.66;
+		raycastdat->plane[1] = 0;
+	}
+	else if (c == 'S')
+	{
+		raycastdat->plane[0] = -0.66;
+		raycastdat->plane[1] = 0;
+	}
+	else if (c == 'W')
+	{
+		raycastdat->plane[0] = 0;
+		raycastdat->plane[1] = 0.66;
+	}
+	else if (c == 'E')
+	{
+		raycastdat->plane[0] = 0;
+		raycastdat->plane[1] = -0.66;
+	}
+}
+
+static void set_dir(char c, t_raycastdat *raycastdat)
 {
 	if (c == 'N')
 	{
 		raycastdat->dir[0] = 0;
 		raycastdat->dir[1] = 1;
-		return (1);
-	}
-	else if (c == 'E')
-	{
-		raycastdat->dir[0] = 1;
-		raycastdat->dir[1] = 0;
-		return (1);
 	}
 	else if (c == 'S')
 	{
 		raycastdat->dir[0] = 0;
 		raycastdat->dir[1] = -1;
-		return (1);
 	}
 	else if (c == 'W')
 	{
 		raycastdat->dir[0] = -1;
 		raycastdat->dir[1] = 0;
+	}
+	else if (c == 'E')
+	{
+		raycastdat->dir[0] = 1;
+		raycastdat->dir[1] = 0;
+	}
+}
+
+static int is_player(char c, t_raycastdat *raycastdat)
+{
+	if (c == 'N')
+	{
+		set_dir(c, raycastdat);
+		set_plane(c, raycastdat);
+		return (1);
+	}
+	else if (c == 'E')
+	{
+		set_dir(c, raycastdat);
+		set_plane(c, raycastdat);
+		return (1);
+	}
+	else if (c == 'S')
+	{
+		set_dir(c, raycastdat);
+		set_plane(c, raycastdat);
+		return (1);
+	}
+	else if (c == 'W')
+	{
+		set_dir(c, raycastdat);
+		set_plane(c, raycastdat);
 		return (1);
 	}
 	return (0);
@@ -43,8 +91,8 @@ static int get_init_pos(t_data *data)
 		{
 			if (is_player(data->map.map[y][x], &data->raycastdat))
 			{
-				data->raycastdat.playerpos[0] = x;
-				data->raycastdat.playerpos[1] = y;
+				data->raycastdat.playerpos[0] = x + 0.5f; //existem motivos para o +0.5
+				data->raycastdat.playerpos[1] = y + 0.5f; //existem motivos para o +0.5
 				return (0);
 			}
 			x++;
@@ -54,18 +102,17 @@ static int get_init_pos(t_data *data)
 	return (1);
 }
 
-/*static int get_map_size(t_data *data)
-{
-	
-}*/
-
 int get_info(t_data *data)
 {
 	get_init_pos(data);
-/*	printf("%d\n%d\n%c\n%d\n%d\n", data->raycastdat.playerpos[0],\
-	data->raycastdat.playerpos[1], \
-	data->map.map[data->raycastdat.playerpos[1]][data->raycastdat.playerpos[0]],\
-	data->raycastdat.dir[0], data->raycastdat.dir[1]);*/
-//	get_map_size();
+// PRINTF FROM HELL ***
+/*	printf("player pos x: %f\n\
+player pos y: %f\nplayer: %c\n\
+player dir x: %f\nplayer dir y %f\n\
+plane x: %f\nplane y: %f\n",\
+data->raycastdat.playerpos[0],\
+data->raycastdat.playerpos[1], \
+data->map.map[(int)data->raycastdat.playerpos[1]][(int)data->raycastdat.playerpos[0]],\
+data->raycastdat.dir[0], data->raycastdat.dir[1], data->raycastdat.plane[0], data->raycastdat.plane[1]);*/
 	return (0);
 }

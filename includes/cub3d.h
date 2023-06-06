@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
+/*   By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:07:36 by amenesca          #+#    #+#             */
-/*   Updated: 2023/06/05 16:26:33 by femarque         ###   ########.fr       */
+/*   Updated: 2023/06/06 11:09:46 by amenesca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ typedef struct s_mlxdata
 
 typedef struct s_raycastdat
 {
-	int			map_size[2];
-	int			playerpos[2];
-	int			dir[2];
+	double		playerpos[2];
+	double		dir[2];
+	double		plane[2];
 } t_raycastdat;
 typedef struct s_data
 {

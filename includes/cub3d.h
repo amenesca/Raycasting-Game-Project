@@ -107,6 +107,9 @@ int		init_mlx(t_mlxdata *mlxdata);
 // get_info.c
 int		get_info(t_data *data);
 
+//read_xpm.c
+int		read_xpm(t_data *data);
+
 // ****** Funcoes para testar coisas ****** apagar depois
 
 void	print_array(char **array);

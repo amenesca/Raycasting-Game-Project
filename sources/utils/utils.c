@@ -58,10 +58,14 @@ void free_array(char **array)
 	while (array[i] != NULL)
 	{
 		free(array[i]);
+		array[i] = NULL;
 		i++;
 	}
 	if (array != NULL)
+	{
 		free(array);
+		array = NULL;
+	}
 }
 
 int count_array(char **array)

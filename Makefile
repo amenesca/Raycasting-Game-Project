@@ -31,7 +31,7 @@ SRCS		= ./sources/main.c ./sources/treat_initial_errors/treat_args_errors.c ./so
  ./sources/read_get_validate/get_colors_textures.c ./sources/read_get_validate/read_map.c ./sources/read_get_validate/validate_colors_textures.c\
  ./sources/read_get_validate/split_colors.c ./sources/read_get_validate/split_textures.c ./sources/read_get_validate/validate_map.c\
  ./sources/read_get_validate/test_colors.c ./sources/read_get_validate/get_map.c ./sources/read_get_validate/get_n_validate.c\
- ./sources/init_mlx/init_mlx.c ./sources/raycasting/get_info.c ./sources/read_xpm/read_xpm.c
+ ./sources/init_mlx/init_mlx.c ./sources/raycasting/get_info.c
 
 OBJS		= $(SRCS:.c=.o)
 

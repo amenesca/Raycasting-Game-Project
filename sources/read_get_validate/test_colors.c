@@ -42,10 +42,16 @@ static int validate_ceiling(t_map *map)
 
 	color = ft_split(map->colors[1], ',');
 	if (count_array(color) != 3)
+	{
+		free_array(color);
 		return (1);
+	}
 	if (only_numbers(color) > 0)
+	{
+		free_array(color);
 		return (1);
-	map->ceiling = (int *)malloc(sizeof(int) * 3);
+	}
+	map->ceiling = (int *)ft_calloc(sizeof(int), 3);
 	i = 0;
 	while (i < 3)
 	{
@@ -53,7 +59,11 @@ static int validate_ceiling(t_map *map)
 		i++;
 	}	
 	if (test_values(map->ceiling) > 0)
+	{
+		free_array(color);
 		return (1);
+	}
+	free_array(color);
 	return (0);
 }
 static int validate_floor(t_map *map)
@@ -63,10 +73,16 @@ static int validate_floor(t_map *map)
 
 	color = ft_split(map->colors[0], ',');
 	if (count_array(color) != 3)
+	{
+		free_array(color);
 		return (1);
+	}
 	if (only_numbers(color) > 0)
+	{
+		free_array(color);
 		return (1);
-	map->floor = (int *)malloc(sizeof(int) * 3);
+	}
+	map->floor = (int *)ft_calloc(sizeof(int), 3);
 	i = 0;
 	while (i < 3)
 	{
@@ -74,7 +90,11 @@ static int validate_floor(t_map *map)
 		i++;
 	}
 	if (test_values(map->floor) > 0)
+	{
+		free_array(color);
 		return (1);
+	}
+	free_array(color);
 	return (0);
 }
 

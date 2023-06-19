@@ -31,4 +31,8 @@ void free_all(t_map *map)
 		free_array(map->map);
 	if (map->remap)
 		free_array(map->remap);
+	if (map->floor)
+		free(map->floor);
+	if (map->ceiling)
+		free(map->ceiling);
 }

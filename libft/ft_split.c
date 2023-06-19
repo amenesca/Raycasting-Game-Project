@@ -21,7 +21,7 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	ret = (char **) malloc((how_many_words(s, c) + 1) * sizeof(char *));
+	ret = (char **) ft_calloc((how_many_words(s, c) + 1), sizeof(char *));
 	if (!ret)
 		return (NULL);
 	do_split(ret, s, c);

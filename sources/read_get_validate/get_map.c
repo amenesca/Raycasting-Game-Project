@@ -36,7 +36,7 @@ int get_map(t_map *map)
 	}
 	if (map->file_read[i] == NULL)
 	{
-		write(2, "cub3d: Error: Empty map.\n", 26);
+		ft_error("cub3d: Error: Empty map.");
 		return (1);
 	}
 	map->map_height = map->file_lines - i;

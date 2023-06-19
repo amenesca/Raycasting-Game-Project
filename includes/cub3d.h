@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:07:36 by amenesca          #+#    #+#             */
-/*   Updated: 2023/06/06 11:09:46 by amenesca         ###   ########.fr       */
+/*   Updated: 2023/06/19 18:29:59 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,41 @@
 # include "../libft/libft.h"
 # include "./defines.h"
 # include <fcntl.h>
+# include <unistd.h>
 # include <stdio.h> // remover depois
+
+# ifdef __linux__
+
+enum	e_keycode
+{
+	UP = 119,
+	DOWN = 115,
+	LEFT = 97,
+	RIGHT = 100,
+	KEY_ESC = 65307
+};
+# else
+
+enum	e_keycode
+{
+	UP = 13,
+	DOWN = 1,
+	LEFT = 0,
+	RIGHT = 2,
+	KEY_ESC = 53
+};
+# endif
+
 typedef struct s_map
 {
+	char		**map;
+	char		**remap;
 	char		**file_read;
-	int			file_lines;
 	char		**textures;
 	char		**colors;
 	int			*ceiling;
 	int			*floor;
-	char		**map;
-	char		**remap;
+	int			file_lines;
 	int			map_height;
 	int			map_widht;
 } t_map;
@@ -45,6 +69,7 @@ typedef struct s_mlxdata
 	char		*addr;
 	int			bits;
 	int			line;
+	int			finish;
 	int			endian;
 } t_mlxdata;
 
@@ -97,12 +122,16 @@ void	free_array(char **array);
 int		count_array(char **array);
 int		init_pointers(t_map *map);
 void	free_all(t_map *map);
+int	ft_error(char *s);
 
 // validate_map.c
 int		validate_map(t_map *map);
 
 //init_mlx.c
-int		init_mlx(t_mlxdata *mlxdata);
+int init_data(t_data *data);
+int init_mlx(t_data *data);
+int	key_hook(int keycode, t_mlxdata *game);
+int	close_game(t_mlxdata *game);
 
 // get_info.c
 int		get_info(t_data *data);

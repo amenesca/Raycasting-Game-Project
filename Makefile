@@ -6,7 +6,7 @@
 #    By: femarque <femarque@student.42.rio>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:08:11 by amenesca          #+#    #+#              #
-#    Updated: 2023/06/05 16:21:59 by femarque         ###   ########.fr        #
+#    Updated: 2023/06/19 18:07:35 by femarque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ NAME 		= cub3d
 
 LIBFT		= ./libft/libft.a
 
-SRCS		= ./sources/main.c ./sources/treat_initial_errors/treat_args_errors.c ./sources/utils/utils.c ./sources/utils/utils2.c  tests_purpose_functions.c\
+SRCS		= ./sources/main.c ./sources/treat_initial_errors/treat_args_errors.c ./sources/utils/error.c ./sources/utils/utils.c ./sources/utils/utils2.c  tests_purpose_functions.c\
  ./sources/read_get_validate/get_colors_textures.c ./sources/read_get_validate/read_map.c ./sources/read_get_validate/validate_colors_textures.c\
  ./sources/read_get_validate/split_colors.c ./sources/read_get_validate/split_textures.c ./sources/read_get_validate/validate_map.c\
  ./sources/read_get_validate/test_colors.c ./sources/read_get_validate/get_map.c ./sources/read_get_validate/get_n_validate.c\

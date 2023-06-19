@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:07:42 by amenesca          #+#    #+#             */
-/*   Updated: 2023/06/06 11:58:05 by amenesca         ###   ########.fr       */
+/*   Updated: 2023/06/19 18:39:45 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,11 @@ int main(int argc, char *argv[])
 //	print_array(data.map.map);
 	print_array(data.map.remap);
 	
-//	get_info(&data);
-//	init_mlx(&data.mlxdata);
-//	mlx_loop(data.mlxdata.mlx);
+	get_info(&data);
+	init_data(&data);
+	mlx_hook(data.mlxdata.mlx_win, 2, 1L << 0, &key_hook, &data.mlxdata);
+	mlx_hook(data.mlxdata.mlx_win, 17, 1L << 2, &close_game, &data.mlxdata);
+	mlx_loop(data.mlxdata.mlx);
 	free_all(&data.map);
 	return (0);
 }

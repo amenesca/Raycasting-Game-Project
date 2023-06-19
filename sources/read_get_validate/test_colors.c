@@ -102,12 +102,12 @@ int test_colors(t_map *map)
 {
 	if (validate_ceiling(map) > 0)
 	{
-		write(2, "cub3d: Error: Wrong colors\n", 28);
+		ft_error("cub3d: Error: Wrong colors");
 		return (1);
 	}
 	if (validate_floor(map) > 0)
 	{
-		write(2, "cub3d: Error: Wrong colors\n", 28);
+		ft_error("cub3d: Error: Wrong colors");
 		return (1);
 	}
 	return (0);

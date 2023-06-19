@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 19:39:38 by amenesca          #+#    #+#             */
-/*   Updated: 2023/05/24 18:29:59 by amenesca         ###   ########.fr       */
+/*   Updated: 2023/06/19 18:09:53 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	count_lines(char *map_path)
 	fd = open(map_path, O_RDONLY);
 	if (fd == -1)
 	{
-		write(2, "Cub3d: Error: invalid fd\n", 25);
+		ft_error("Cub3d: Error: invalid fd");
 		return (-1);
 	}
 	i = 0;
@@ -66,7 +66,7 @@ int	read_map(char *map_path, t_map *map)
 		return (1);
 	if (map->file_lines == 0)
 	{
-		write(2, "cub3d: Error: Empty file\n", 26);
+		ft_error("cub3d: Error: Empty file");
 		return (1);
 	}
 	map->file_read = (char **)ft_calloc(sizeof(char *),\

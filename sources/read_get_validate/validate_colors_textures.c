@@ -26,24 +26,17 @@ int	validate_colors_textures(t_map *map)
 	i = -1;
 	if (split_textures(map) > 0)
 		error = 1;
-//		return (write(2, "cub3d: Error: Wrong textures\n", 29));
 	if (split_colors(map) > 0)
 		error = 2; 
-//		return (write(2, "cub3d: Error: Wrong colors\n", 27));
 	while (++i < 4)
 	{
 		if (map->textures[i] == NULL )
-		{
 			error = 1;
-			break ;
-//			return (write(2, "cub3d: Error: Wrong textures\n", 29));
-		}
 		fd = open(map->textures[i], O_RDWR);
 		if (fd == -1)
 		{
 			error = 1;
 			break ;
-//			return (write(2, "cub3d: Error: Textures path invalid\n", 37));
 		}
 		close(fd);
 	}
@@ -51,8 +44,7 @@ int	validate_colors_textures(t_map *map)
 	while (i < 2)
 	{
 		if (map->colors[i++] == NULL)
-			error = 2;		
-//			return (write(2, "cub3d: Error: Wrong colors\n", 27));
+			error = 2;
 	}
 	return	(treat_free_errors(error, map));
 }

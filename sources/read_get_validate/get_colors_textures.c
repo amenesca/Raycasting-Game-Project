@@ -12,40 +12,28 @@ static int	 get_textures(t_map *map)
 			if (map->textures[NO] == NULL)
 				map->textures[NO] = ft_strdup(map->file_read[i]);
 			else
-			{
-				map->textures[NO] = NULL;
 				return (-1);
-			}
 		}
 		else if (ft_strnstr(map->file_read[i], "SO ", ft_strlen(map->file_read[i])) != NULL)
 		{
 			if (map->textures[SO] == NULL)
 				map->textures[SO] = ft_strdup(map->file_read[i]);
 			else
-			{
-				map->textures[SO] = NULL;
 				return (-1);
-			}
 		}
 		else if (ft_strnstr(map->file_read[i], "WE ", ft_strlen(map->file_read[i])) != NULL)
 		{
 			if (map->textures[WE] == NULL)
 				map->textures[WE] = ft_strdup(map->file_read[i]);
 			else
-			{
-				map->textures[WE] = NULL;
 				return (-1);
-			}
 		}
 		else if (ft_strnstr(map->file_read[i], "EA ", ft_strlen(map->file_read[i])) != NULL)
 		{
 			if (map->textures[EA] == NULL)
 				map->textures[EA] = ft_strdup(map->file_read[i]);
 			else
-			{
-				map->textures[EA] = NULL;
 				return (-1);
-			}
 		}
 	}
 	map->textures[4] = NULL;
@@ -83,10 +71,12 @@ int get_colors_textures(t_map *map)
 {
 	if (get_textures(map) == -1)
 	{
+		free_text_col_array(map);
 		return (write(2, "cub3d: Error: Wrong textures.\n", 30));
 	}
 	if (get_colors(map) == -1)
 	{
+		free_text_col_array(map);
 		return (write(2, "cub3d: Error: Wrong colors.\n", 28));
 	}
 	return (0);

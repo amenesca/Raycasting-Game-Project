@@ -1,9 +1,9 @@
-
+NO ./sources/textures/sandbrick_wall.xpm
 SO ./sources/textures/bat_brick.xpm
 WE ./sources/textures/stonewallcreepy.xpm
 EA ./sources/textures/brickwallcracked.xpm
 
-F 220,100,3
+F 220,100,abc
 C 225,30,0
 
 111111111111111111111

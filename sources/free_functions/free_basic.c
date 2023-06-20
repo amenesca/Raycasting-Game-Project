@@ -15,6 +15,14 @@ void free_text_col(t_map *map)
 	return ;
 }
 
+void free_ceil_floor(t_map *map)
+{
+	if (map->floor)
+		free(map->floor);
+	if (map->ceiling)
+		free(map->ceiling);
+}
+
 void free_text_col_array(t_map *map)
 {
 	int i;
@@ -24,10 +32,12 @@ void free_text_col_array(t_map *map)
 	{
 		if (i < 2)
 		{
-			free(map->colors[i]);
+			if ((map->colors[i]) != NULL)
+				free(map->colors[i]);
 			map->colors[i] = NULL;
 		}
-		free(map->textures[i]);
+		if (map->textures != NULL)
+			free(map->textures[i]);
 		map->textures[i] = NULL;
 		i++;
 	}

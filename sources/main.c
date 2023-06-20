@@ -22,10 +22,7 @@ int main(int argc, char *argv[])
 	if (read_map(argv[1], &data.map) != 0)
 		return (-1);
 	if (get_n_validate(&data.map) != 0)
-	{
-//		free_all(&data.map);
 		return (-1);
-	}
 	print_array(data.map.file_read);
 	print_array(data.map.textures);
 //	print_array(data.map.colors);

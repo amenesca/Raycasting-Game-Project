@@ -106,14 +106,14 @@ int test_colors(t_map *map)
 	{
 		free_text_col_array(map);
 		free_ceil_floor(map);
-		ft_error("cub3d: Error: Wrong colors1");
+		ft_error("cub3d: Error: Wrong colors");
 		return (1);
 	}
 	if (validate_floor(map) > 0)
 	{
 		free_text_col_array(map);
 		free_ceil_floor(map);
-		ft_error("cub3d: Error: Wrong colors2");
+		ft_error("cub3d: Error: Wrong colors");
 		return (1);
 	}
 	return (0);

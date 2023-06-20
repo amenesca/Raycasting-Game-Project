@@ -36,6 +36,8 @@ int get_map(t_map *map)
 	}
 	if (map->file_read[i] == NULL)
 	{
+		free_ceil_floor(map);
+		free_text_col_array(map);
 		ft_error("cub3d: Error: Empty map.");
 		return (1);
 	}

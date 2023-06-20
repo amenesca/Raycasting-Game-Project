@@ -24,15 +24,17 @@ int	validate_colors_textures(t_map *map)
 
 	error = 0;
 	i = -1;
+	fd = -1;
 	if (split_textures(map) > 0)
 		error = 1;
 	if (split_colors(map) > 0)
 		error = 2; 
 	while (++i < 4)
 	{
-		if (map->textures[i] == NULL )
+		if (map->textures[i] == NULL)
 			error = 1;
-		fd = open(map->textures[i], O_RDWR);
+		else
+			fd = open(map->textures[i], O_RDWR);
 		if (fd == -1)
 		{
 			error = 1;

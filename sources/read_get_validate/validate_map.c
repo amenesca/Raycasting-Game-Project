@@ -168,8 +168,14 @@ int validate_map(t_map *map)
 	get_map_widht(map);
 	fill_out_spaces(map);
 	if (validade_char(map))
+	{
+		free_all(map);
 		return (1);
+	}
 	if (validate_space(map))
+	{
+		free_all(map);
 		return (1);
+	}
 	return (0);
 }

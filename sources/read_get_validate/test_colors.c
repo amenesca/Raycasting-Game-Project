@@ -100,13 +100,19 @@ static int validate_floor(t_map *map)
 
 int test_colors(t_map *map)
 {
+	map->ceiling = NULL;
+	map->floor = NULL;
 	if (validate_ceiling(map) > 0)
 	{
+		free_text_col_array(map);
+		free_ceil_floor(map);
 		ft_error("cub3d: Error: Wrong colors");
 		return (1);
 	}
 	if (validate_floor(map) > 0)
 	{
+		free_text_col_array(map);
+		free_ceil_floor(map);
 		ft_error("cub3d: Error: Wrong colors");
 		return (1);
 	}

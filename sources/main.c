@@ -20,20 +20,9 @@ int main(int argc, char *argv[])
 		return (-1);
 	init_pointers(&data.map);
 	if (read_map(argv[1], &data.map) != 0)
-	{
-		free_all(&data.map);
 		return (-1);
-	}
-	if (data.map.file_read == NULL)
-	{
-		free_all(&data.map);
-		return (-1);
-	}
 	if (get_n_validate(&data.map) != 0)
-	{
-		free_all(&data.map);
 		return (-1);
-	}
 	print_array(data.map.file_read);
 	print_array(data.map.textures);
 //	print_array(data.map.colors);

@@ -136,6 +136,11 @@ int	close_game(t_mlxdata *game);
 // get_info.c
 int		get_info(t_data *data);
 
+//free_functions
+void free_basic(t_map *map);
+void free_text_col(t_map *map);
+void free_text_col_array(t_map *map);
+void free_ceil_floor(t_map *map);
 
 // ****** Funcoes para testar coisas ****** apagar depois
 

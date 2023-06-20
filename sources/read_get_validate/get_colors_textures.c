@@ -70,8 +70,14 @@ static int	get_colors(t_map *map)
 int get_colors_textures(t_map *map)
 {
 	if (get_textures(map) == -1)
+	{
+		free_text_col_array(map);
 		return (write(2, "cub3d: Error: Wrong textures.\n", 30));
+	}
 	if (get_colors(map) == -1)
+	{
+		free_text_col_array(map);
 		return (write(2, "cub3d: Error: Wrong colors.\n", 28));
+	}
 	return (0);
 }

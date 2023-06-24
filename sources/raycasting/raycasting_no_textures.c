@@ -25,10 +25,10 @@ int do_raycasting(t_data *data)
 		while (++x < w)
 		{
 			cameraX = 2 * x / (double)w - 1;
-			rayDirX = data->raycastdat.dir[0] + data->raycastdat.plane[0] * cameraX;
-			rayDirY = data->raycastdat.dir[1] + data->raycastdat.plane[1] * cameraX;
-			mapX = data->raycastdat.playerpos[0];
-			mapY = data->raycastdat.playerpos[1];
+			rayDirX = data->ray.dir[0] + data->ray.plane[0] * cameraX;
+			rayDirY = data->ray.dir[1] + data->ray.plane[1] * cameraX;
+			mapX = data->ray.playerpos[0];
+			mapY = data->ray.playerpos[1];
 
 		}
 	}

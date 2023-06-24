@@ -5,12 +5,12 @@ static char	*ft_strdup_map(const char *s1, t_map *map, int spaces_flag)
 	int	i;
 	char	*map_line;
 
-	map_line = (char *) ft_calloc((map->map_widht + 2), sizeof(char));
+	map_line = (char *) ft_calloc((map->map_width + 2), sizeof(char));
 	if (!map_line)
 		return (NULL);
 	i = 0;
 
-	while (i < map->map_widht)
+	while (i < map->map_width)
 		map_line[i++] = ' ';
 	map_line[i + 1] = '\0';
 	if (spaces_flag)
@@ -23,19 +23,19 @@ static char	*ft_strdup_map(const char *s1, t_map *map, int spaces_flag)
 	return ((char *)(map_line));
 }
 
-void get_map_widht(t_map *map)
+void get_map_width(t_map *map)
 {
 	int i;
 
 	i = 0;
-	map->map_widht = ft_strlen(map->map[0]); 
+	map->map_width = ft_strlen(map->map[0]); 
 	while (map->map[i] != NULL)
 	{
-		if (ft_strlen(map->map[i]) > (size_t)map->map_widht)
-			map->map_widht = ft_strlen(map->map[i]);
+		if (ft_strlen(map->map[i]) > (size_t)map->map_width)
+			map->map_width = ft_strlen(map->map[i]);
 		i++;
 	}
-	map->map_widht += 4;
+	map->map_width += 4;
 }
 
 void fill_out_spaces(t_map *map)
@@ -76,7 +76,7 @@ int	validade_char(t_map *map)
 	while (i < map->map_height - 1)
 	{
 		j = 1;
-		while (j < map->map_widht - 1)
+		while (j < map->map_width - 1)
 		{
 			if (is_valid_char(map->remap[i][j]) == 2 && flag_error == 0)
 				flag_error = 1;
@@ -144,7 +144,7 @@ int	validate_space(t_map *map)
 	while (i < map->map_height - 1)
 	{
 		j = 1;
-		while (j < map->map_widht - 1)
+		while (j < map->map_width - 1)
 		{
 			if (map->remap[i][j] == ' ')
 			{
@@ -165,7 +165,7 @@ int	validate_space(t_map *map)
 
 int validate_map(t_map *map)
 {
-	get_map_widht(map);
+	get_map_width(map);
 	fill_out_spaces(map);
 	if (validade_char(map))
 	{

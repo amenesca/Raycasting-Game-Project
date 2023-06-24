@@ -6,7 +6,7 @@
 /*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:07:36 by amenesca          #+#    #+#             */
-/*   Updated: 2023/06/19 18:29:59 by femarque         ###   ########.fr       */
+/*   Updated: 2023/06/24 19:04:42 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,29 +22,34 @@
 
 # include "../libft/libft.h"
 # include "./defines.h"
+# include <math.h>
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdio.h> // remover depois
 
 # ifdef __linux__
 
-enum	e_keycode
+enum e_keycode
 {
-	UP = 119,
-	DOWN = 115,
-	LEFT = 97,
-	RIGHT = 100,
-	KEY_ESC = 65307
+	W_KEY = 119,
+	S_KEY = 115,
+	A_KEY = 97,
+	D_KEY = 100,
+	LEFT_KEY = 65361,
+	RIGHT_KEY = 65363,
+	ESC_KEY = 65307
 };
 # else
 
-enum	e_keycode
+enum e_keycode
 {
-	UP = 13,
-	DOWN = 1,
-	LEFT = 0,
-	RIGHT = 2,
-	KEY_ESC = 53
+	W_KEY = 13,
+	S_KEY = 1,
+	A_KEY = 0,
+	D_KEY = 2,
+	LEFT_KEY = 123,
+	RIGHT_KEY = 124,
+	ESC_KEY = 53
 };
 # endif
 
@@ -59,7 +64,7 @@ typedef struct s_map
 	int			*floor;
 	int			file_lines;
 	int			map_height;
-	int			map_widht;
+	int			map_width;
 } t_map;
 typedef struct s_mlxdata
 {
@@ -73,17 +78,35 @@ typedef struct s_mlxdata
 	int			endian;
 } t_mlxdata;
 
-typedef struct s_raycastdat
+typedef struct s_ray
 {
-	double		playerpos[2];
-	double		dir[2];
-	double		plane[2];
-} t_raycastdat;
+	double	playerpos[2];
+	double	dir[2];
+	double	plane[2];
+	int		mapX;
+	int		mapY;
+	int		hit;
+	int stepX;
+	int stepY; //was there a wall hit?
+	int side;
+	int drawEnd;
+	int drawStart;
+	int lineHeight;
+	double rayX;
+	double rayY;
+	double sideX;
+	double sideY;
+	double deltaX;
+	double deltaY;
+	double cameraX;
+	double perp_wall;
+} t_ray;
+
 typedef struct s_data
 {
 	t_map		map;
 	t_mlxdata	mlxdata;
-	t_raycastdat raycastdat;
+	t_ray		*ray;
 } t_data;
 
 // treat_args_error.c
@@ -135,12 +158,24 @@ int	close_game(t_mlxdata *game);
 
 // get_info.c
 int		get_info(t_data *data);
+void verLine(t_data *data, int x, int y1, int y2, int color);
+int divideColorByValue(int color, int value);
+void	render(t_data *data);
+int deal_key(int keycode, t_mlxdata *data, double moveSpeed, double rotSpeed);
 
 //free_functions
 void free_basic(t_map *map);
 void free_text_col(t_map *map);
 void free_text_col_array(t_map *map);
 void free_ceil_floor(t_map *map);
+
+//raycasting
+void	side_step(t_data *data);
+void	dda(t_data *data);
+void config_ray(t_data *data, int x);
+void camera_man(t_data *data);
+void	ray_line(t_data *data);
+int game(t_data *data);
 
 // ****** Funcoes para testar coisas ****** apagar depois
 

@@ -6,7 +6,7 @@
 /*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:07:36 by amenesca          #+#    #+#             */
-/*   Updated: 2023/06/24 19:04:42 by femarque         ###   ########.fr       */
+/*   Updated: 2023/06/25 16:29:02 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,23 @@
 
 # ifdef __linux__
 
-enum e_keycode
+enum	e_keycode
 {
-	W_KEY = 119,
-	S_KEY = 115,
-	A_KEY = 97,
-	D_KEY = 100,
-	LEFT_KEY = 65361,
-	RIGHT_KEY = 65363,
-	ESC_KEY = 65307
+	UP = 119,
+	DOWN = 115,
+	LEFT = 97,
+	RIGHT = 100,
+	KEY_ESC = 65307
 };
 # else
 
-enum e_keycode
+enum	e_keycode
 {
-	W_KEY = 13,
-	S_KEY = 1,
-	A_KEY = 0,
-	D_KEY = 2,
-	LEFT_KEY = 123,
-	RIGHT_KEY = 124,
-	ESC_KEY = 53
+	UP = 13,
+	DOWN = 1,
+	LEFT = 0,
+	RIGHT = 2,
+	KEY_ESC = 53
 };
 # endif
 
@@ -106,7 +102,7 @@ typedef struct s_data
 {
 	t_map		map;
 	t_mlxdata	mlxdata;
-	t_ray		*ray;
+	t_ray		ray;
 } t_data;
 
 // treat_args_error.c

@@ -6,7 +6,7 @@
 /*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 19:08:19 by femarque          #+#    #+#             */
-/*   Updated: 2023/06/24 19:08:43 by femarque         ###   ########.fr       */
+/*   Updated: 2023/06/25 16:18:47 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,10 +100,10 @@ static int get_init_pos(t_data *data)
 		x = 0;
 		while (data->map.map[y][x])
 		{
-			if (is_player(data->map.map[y][x], data->ray))
+			if (is_player(data->map.map[y][x], &data->ray))
 			{
-				data->ray->playerpos[0] = x + 0.5f; //existem motivos para o +0.5
-				data->ray->playerpos[1] = y + 0.5f; //existem motivos para o +0.5
+				data->ray.playerpos[0] = x + 0.5f; //existem motivos para o +0.5
+				data->ray.playerpos[1] = y + 0.5f; //existem motivos para o +0.5
 				return (0);
 			}
 			x++;
@@ -121,9 +121,9 @@ int get_info(t_data *data)
 player pos y: %f\nplayer: %c\n\
 player dir x: %f\nplayer dir y %f\n\
 plane x: %f\nplane y: %f\n",\
-data->ray->playerpos[0],\
-data->ray->playerpos[1], \
-data->map.map[(int)data->ray->playerpos[1]][(int)data->ray->playerpos[0]],\
-data->ray->dir[0], data->ray->dir[1], data->ray->plane[0], data->ray->plane[1]);*/
+data->ray.playerpos[0],\
+data->ray.playerpos[1], \
+data->map.map[(int)data->ray.playerpos[1]][(int)data->ray.playerpos[0]],\
+data->ray.dir[0], data->ray.dir[1], data->ray.plane[0], data->ray.plane[1]);*/
 	return (0);
 }

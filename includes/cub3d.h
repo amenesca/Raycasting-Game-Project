@@ -88,14 +88,14 @@ typedef struct s_ray
 	int drawEnd;
 	int drawStart;
 	int lineHeight;
-	double rayX;
-	double rayY;
-	double sideX;
-	double sideY;
-	double deltaX;
-	double deltaY;
+	double rayDirX;
+	double rayDirY;
+	double sideDistX;
+	double sideDistY;
+	double deltaDistX;
+	double deltaDistY;
 	double cameraX;
-	double perp_wall;
+	double perpWallDist;
 } t_ray;
 
 typedef struct s_data
@@ -174,6 +174,9 @@ void config_ray(t_data *data, int x);
 void camera_man(t_data *data);
 void	ray_line(t_data *data);
 int game(t_data *data);
+
+//raycasting_no_textures
+void raycasting_no_textures(t_data *data);
 
 // ****** Funcoes para testar coisas ****** apagar depois
 

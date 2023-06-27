@@ -45,8 +45,6 @@ void fill_out_spaces(t_map *map)
 	map->map_height += 4;
 	map->remap = (char **)ft_calloc(sizeof(char *), (map->map_height + 1));
 	i = -1;
-
-
 	map->remap[0] = ft_strdup_map(NULL, map, 1);
 	map->remap[1] = ft_strdup_map(NULL, map, 1);
 	map->remap[map->map_height - 1] = ft_strdup_map(NULL, map, 1);

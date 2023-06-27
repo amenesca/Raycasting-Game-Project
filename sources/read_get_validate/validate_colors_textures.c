@@ -16,19 +16,15 @@ static int treat_free_errors(int error, t_map *map)
 		return (0);
 }
 
-int	validate_colors_textures(t_map *map)
+static int check_textures_path(t_map *map)
 {
-	int i;
-	int fd;
+	int	i;
 	int error;
+	int fd;
 
 	error = 0;
 	i = -1;
 	fd = -1;
-	if (split_textures(map) > 0)
-		error = 1;
-	if (split_colors(map) > 0)
-		error = 2; 
 	while (++i < 4)
 	{
 		if (map->textures[i] == NULL)
@@ -42,7 +38,21 @@ int	validate_colors_textures(t_map *map)
 		}
 		close(fd);
 	}
+	return (error);
+}
+
+int	validate_colors_textures(t_map *map)
+{
+	int i;
+	int error;
+
+	error = 0;
 	i = 0;
+	if (split_textures(map) > 0)
+		error = 1;
+	if (split_colors(map) > 0)
+		error = 2; 
+	error = check_textures_path(map);
 	while (i < 2)
 	{
 		if (map->colors[i++] == NULL)

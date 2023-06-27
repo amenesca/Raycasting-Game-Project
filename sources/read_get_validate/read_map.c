@@ -54,14 +54,8 @@ void remove_endl(t_map *map)
 	map->file_read = map_read;
 }
 
-int	read_map(char *map_path, t_map *map)
+static int read_map_error(t_map *map)
 {
-	int i;
-	int fd;
-
-	i = 0;
-	fd = open(map_path, O_RDONLY);
-	map->file_lines = count_lines(map_path);
 	if (map->file_lines == -1)
 	{
 		free_text_col(map);
@@ -73,6 +67,19 @@ int	read_map(char *map_path, t_map *map)
 		ft_error("cub3d: Error: Empty file");
 		return (1);
 	}
+	return (0);
+}
+
+int	read_map(char *map_path, t_map *map)
+{
+	int i;
+	int fd;
+
+	i = 0;
+	fd = open(map_path, O_RDONLY);
+	map->file_lines = count_lines(map_path);
+	if (read_map_error(map) > 0)
+		return (1);
 	map->file_read = (char **)ft_calloc(sizeof(char *),\
  (map->file_lines + 2));
 	while (i < map->file_lines)

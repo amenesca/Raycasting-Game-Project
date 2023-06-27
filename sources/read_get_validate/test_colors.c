@@ -14,7 +14,7 @@ static int test_values(int *colors)
 	return (0);
 }
 
-static int only_numbers(char **color)
+int only_numbers(char **color)
 {
 	int i;
 	int j;
@@ -41,23 +41,15 @@ static int validate_ceiling(t_map *map)
 	char **color;
 
 	color = ft_split(map->colors[1], ',');
-	if (count_array(color) != 3)
-	{
-		free_array(color);
+	if (verify_quant(&color) > 0)
 		return (1);
-	}
-	if (only_numbers(color) > 0)
-	{
-		free_array(color);
-		return (1);
-	}
 	map->ceiling = (int *)ft_calloc(sizeof(int), 3);
 	i = 0;
 	while (i < 3)
 	{
 		map->ceiling[i] = ft_atoi(color[i]);
 		i++;
-	}	
+	}
 	if (test_values(map->ceiling) > 0)
 	{
 		free_array(color);
@@ -66,22 +58,15 @@ static int validate_ceiling(t_map *map)
 	free_array(color);
 	return (0);
 }
+
 static int validate_floor(t_map *map)
 {
 	int i;
 	char **color;
 
 	color = ft_split(map->colors[0], ',');
-	if (count_array(color) != 3)
-	{
-		free_array(color);
+	if (verify_quant(&color) != 0)
 		return (1);
-	}
-	if (only_numbers(color) > 0)
-	{
-		free_array(color);
-		return (1);
-	}
 	map->floor = (int *)ft_calloc(sizeof(int), 3);
 	i = 0;
 	while (i < 3)

@@ -127,6 +127,8 @@ int		split_colors(t_map *map);
 
 // test_colors.c
 int		test_colors(t_map *map);
+int		verify_quant(char ***color);
+int		only_numbers(char **color);
 
 //get_map.c
 int		get_map(t_map *map);

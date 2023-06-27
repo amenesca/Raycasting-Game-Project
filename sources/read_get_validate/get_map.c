@@ -14,11 +14,10 @@ static int is_element(char *line)
 	return (0);
 }
 
-int get_map(t_map *map)
+static int get_map_pos(t_map *map)
 {
 	int i;
 	int flag;
-	int j;
 
 	i = 0;
 	flag = 0;
@@ -29,11 +28,22 @@ int get_map(t_map *map)
 		i++;
 		if (flag == 6)
 		{
-			while (map->file_read[i] != NULL && map->file_read[i][0] == '\0')
+			while (map->file_read[i] != NULL\
+			 && map->file_read[i][0] == '\0')
 				i++;
 			break;
 		}
 	}
+	return (i);
+}
+
+
+int get_map(t_map *map)
+{
+	int i;
+	int j;
+
+	i = get_map_pos(map);
 	if (map->file_read[i] == NULL)
 	{
 		free_ceil_floor(map);
@@ -42,7 +52,8 @@ int get_map(t_map *map)
 		return (1);
 	}
 	map->map_height = map->file_lines - i;
-	map->map = (char **)ft_calloc(sizeof(char *), (map->map_height + 1));
+	map->map = (char **)ft_calloc(sizeof(char *),\
+	 (map->map_height + 1));
 	j = 0;
 	while (j < map->map_height)
 		map->map[j++] = ft_strdup(map->file_read[i++]);

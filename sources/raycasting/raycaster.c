@@ -50,7 +50,6 @@ void config_ray(t_data *data, int x)
 		ray.rayY = 1e30;
 	else
 		ray.deltaY = fabs(1 / ray.rayY);
-	ray.hit = 0;
 }
 
 void	side_step(t_data *data)
@@ -96,6 +95,7 @@ void	dda(t_data *data)
 	t_ray	ray;
 
 	ray = data->ray;
+	ray.hit = 0;
 	while (ray.hit == 0)
 	{
 		if (ray.sideX < ray.sideY)

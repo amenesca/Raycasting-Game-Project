@@ -88,14 +88,14 @@ typedef struct s_ray
 	int drawEnd;
 	int drawStart;
 	int lineHeight;
-	double rayDirX;
-	double rayDirY;
-	double sideDistX;
-	double sideDistY;
-	double deltaDistX;
-	double deltaDistY;
+	double rayX;
+	double rayY;
+	double sideX;
+	double sideY;
+	double deltaX;
+	double deltaY;
 	double cameraX;
-	double perpWallDist;
+	double perp_wall;
 } t_ray;
 
 typedef struct s_data

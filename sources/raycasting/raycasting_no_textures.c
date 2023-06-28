@@ -1,7 +1,5 @@
 #include "../../includes/cub3d.h"
 
-#define EPSILON 1e-6
-
 void    ft_mlx_pixel_put(t_data *data, int x, int y, int pixel)
 {
     char    *dest;
@@ -104,14 +102,8 @@ void raycasting_no_textures(t_data *data)
 		if (data->ray.drawEnd >= h)
 			data->ray.drawEnd = h - 1;
 
-		switch(data->map.map[data->ray.mapX][data->ray.mapY])
-      {
-        case 1:  color = 0x6A5ACD;  break; //red
-        case 2:  color = 0x008080;  break; //green
-        case 3:  color = 0x3CB371;   break; //blue
-        case 4:  color = 0xADD8E6;  break; //white
-        default: color = 0x4682B4; break; //yellow
-      }
+        color = 0xFF0000;
+   
 		if (data->ray.side == 1)
 			color = color / 2;
 

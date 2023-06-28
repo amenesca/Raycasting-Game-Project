@@ -168,11 +168,11 @@ void free_text_col_array(t_map *map);
 void free_ceil_floor(t_map *map);
 
 //raycasting
-void	side_step(t_data *data);
-void	dda(t_data *data);
-void config_ray(t_data *data, int x);
-void camera_man(t_data *data);
-void	ray_line(t_data *data);
+void	side_step(t_ray *ray_pointer);
+void	dda(t_data *data, t_ray *ray_pointer);
+void config_ray(t_ray *ray_pointer, int x);
+void camera_man(t_ray *ray_pointer);
+void	ray_line(t_ray *ray_pointer);
 int game(t_data *data);
 
 //raycasting_no_textures

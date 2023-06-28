@@ -24,13 +24,13 @@ int init_data(t_data *data)
 	data->ray.side = 0;
 	data->ray.stepX = 0;
 	data->ray.stepY = 0;
-	data->ray.sideX = 0;
-	data->ray.sideY = 0;
-	data->ray.rayX = 0;
-	data->ray.rayY = 0;
-	data->ray.deltaX = 0;
-	data->ray.deltaY = 0;
-	data->ray.perp_wall = 0;
+	data->ray.sideDistX = 0;
+	data->ray.sideDistY = 0;
+	data->ray.rayDirX = 0;
+	data->ray.rayDirY = 0;
+	data->ray.deltaDistX = 0;
+	data->ray.deltaDistY = 0;
+	data->ray.perpWallDist = 0;
 	data->ray.lineHeight = 0;
 	data->ray.drawStart = 0;
 	data->ray.drawEnd = 0;
@@ -42,6 +42,9 @@ int init_mlx(t_data *data)
 {
 	data->mlxdata.mlx = mlx_init();
 	data->mlxdata.mlx_win = mlx_new_window(data->mlxdata.mlx, w, h, "cub3d");
+	data->mlxdata.img = mlx_new_image(data->mlxdata.mlx, w, h);
+	data->mlxdata.addr = mlx_get_data_addr(data->mlxdata.img,\
+	 &data->mlxdata.bits, &data->mlxdata.line, &data->mlxdata.endian);
 	return (0);
 }
 

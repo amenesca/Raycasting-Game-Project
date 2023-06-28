@@ -1,10 +1,28 @@
 #include "../../includes/cub3d.h"
 
-void verLine(t_data *data, int x, int y1, int y2, int color)
+#define EPSILON 1e-6
+
+void    ft_mlx_pixel_put(t_data *data, int x, int y, int pixel)
+{
+    char    *dest;
+
+	if (y >= h || x >= w || y < 0 || x < 0)
+        return ;
+    dest = data->mlxdata.addr + (y * data->mlxdata.line)\
+	 + (x * (data->mlxdata.bits / 8));
+    *(unsigned int *)dest = pixel;
+}
+
+void verline(t_data *data, int x, int start, int end, int color)
 {
     int i;
-    for (i = y1; i <= y2; i++)
-        mlx_pixel_put(data->mlxdata.mlx, data->mlxdata.mlx_win, x, i, color);
+
+    i = start;
+    while (i <= end)
+    {
+    	ft_mlx_pixel_put(data, x, i, color);
+        i++;
+    }
 }
 
 void raycasting_no_textures(t_data *data)
@@ -21,12 +39,12 @@ void raycasting_no_textures(t_data *data)
 		data->ray.mapX = (int)data->ray.playerpos[0];
 		data->ray.mapY = (int)data->ray.playerpos[1];
 
-		if (data->ray.rayDirX == 0)
+		if (data->ray.rayDirX < EPSILON)
 			data->ray.deltaDistX = 1e30;
 		else
 			data->ray.deltaDistX = fabs(1 / data->ray.rayDirX);
 
-		if (data->ray.rayDirY == 0)
+		if (data->ray.rayDirY < EPSILON)
 			data->ray.deltaDistY = 1e30;
 		else
 			data->ray.deltaDistY = fabs(1 / data->ray.rayDirY);
@@ -86,10 +104,18 @@ void raycasting_no_textures(t_data *data)
 		if (data->ray.drawEnd >= h)
 			data->ray.drawEnd = h - 1;
 
-		color = 0xFF2B7A;
+		switch(data->map.map[data->ray.mapX][data->ray.mapY])
+      {
+        case 1:  color = 0x6A5ACD;  break; //red
+        case 2:  color = 0x008080;  break; //green
+        case 3:  color = 0x3CB371;   break; //blue
+        case 4:  color = 0xADD8E6;  break; //white
+        default: color = 0x4682B4; break; //yellow
+      }
 		if (data->ray.side == 1)
 			color = color / 2;
 
-		verLine(data,x, data->ray.drawStart, data->ray.drawEnd, color);
+		verline(data, x, data->ray.drawStart, data->ray.drawEnd, color);
 	}
+	mlx_put_image_to_window(data->mlxdata.mlx, data->mlxdata.mlx_win, data->mlxdata.img, 0, 0);
 }

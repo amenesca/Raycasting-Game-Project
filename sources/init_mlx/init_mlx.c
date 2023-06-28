@@ -42,6 +42,9 @@ int init_mlx(t_data *data)
 {
 	data->mlxdata.mlx = mlx_init();
 	data->mlxdata.mlx_win = mlx_new_window(data->mlxdata.mlx, w, h, "cub3d");
+	data->mlxdata.img = mlx_new_image(data->mlxdata.mlx, w, h);
+	data->mlxdata.addr = mlx_get_data_addr(data->mlxdata.img,\
+	 &data->mlxdata.bits, &data->mlxdata.line, &data->mlxdata.endian);
 	return (0);
 }
 

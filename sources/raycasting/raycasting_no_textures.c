@@ -37,12 +37,12 @@ void raycasting_no_textures(t_data *data)
 		data->ray.mapX = (int)data->ray.playerpos[0];
 		data->ray.mapY = (int)data->ray.playerpos[1];
 
-		if (data->ray.rayX < EPSILON)
+		if (data->ray.rayX == 0)
 			data->ray.deltaX = 1e30;
 		else
 			data->ray.deltaX = fabs(1 / data->ray.rayX);
 
-		if (data->ray.rayY < EPSILON)
+		if (data->ray.rayY == 0)
 			data->ray.deltaY = 1e30;
 		else
 			data->ray.deltaY = fabs(1 / data->ray.rayY);

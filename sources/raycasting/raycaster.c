@@ -1,39 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   raycaster.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/20 17:08:05 by femarque          #+#    #+#             */
-/*   Updated: 2023/06/25 16:27:55 by femarque         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/cub3d.h"
-
-static void    ft_mlx_pixel_put(t_data *data, int x, int y, int pixel)
-{
-    char    *dest;
-
-	if (y >= h || x >= w || y < 0 || x < 0)
-        return ;
-    dest = data->mlxdata.addr + (y * data->mlxdata.line)\
-	 + (x * (data->mlxdata.bits / 8));
-    *(unsigned int *)dest = pixel;
-}
-
-static void verline(t_data *data, int x, int start, int end, int color)
-{
-    int i;
-
-    i = start;
-    while (i <= end)
-    {
-    	ft_mlx_pixel_put(data, x, i, color);
-        i++;
-    }
-}
 
 int divideColorByValue(int color, int value)
 {
@@ -48,124 +13,141 @@ int divideColorByValue(int color, int value)
     return (red << 16) | (green << 8) | blue;
 }
 
-void config_ray(t_ray *ray_pointer ,int x)
+void    ft_mlx_pixel_put(t_data *data, int x, int y, int pixel)
 {
-	ray_pointer->cameraX = 2 * x / w - 1;
-	ray_pointer->rayX = ray_pointer->dir[0] + ray_pointer->plane[0] * ray_pointer->cameraX;
-	ray_pointer->rayY = ray_pointer->dir[1] + ray_pointer->plane[1] * ray_pointer->cameraX;
-	ray_pointer->mapX = (int)ray_pointer->playerpos[0];
-	ray_pointer->mapY = (int)ray_pointer->playerpos[1];
-	if (ray_pointer->rayX == 0)
-		ray_pointer->rayX = 1e30;
-	else
-		ray_pointer->deltaX = fabs(1 / ray_pointer->rayX);
-	if (ray_pointer->rayY == 0)
-		ray_pointer->rayY = 1e30;
-	else
-		ray_pointer->deltaY = fabs(1 / ray_pointer->rayY);
+    char    *dest;
+
+	if (y >= h || x >= w || y < 0 || x < 0)
+        return ;
+    dest = data->mlxdata.addr + (y * data->mlxdata.line)\
+	 + (x * (data->mlxdata.bits / 8));
+    *(unsigned int *)dest = pixel;
 }
 
-void	side_step(t_ray *ray_pointer)
+void verline(t_data *data, int x, int start, int end, int color)
 {
-	if (ray_pointer->rayX < 0)
+    int i;
+
+    i = start;
+    while (i <= end)
+    {
+    	ft_mlx_pixel_put(data, x, i, color);
+        i++;
+    }
+}
+
+void calculate1(t_ray *ray, int x)
+{
+	ray->cameraX = 2 * x / (double)w - 1;
+	ray->rayX = ray->dir[0] + ray->plane[0] * ray->cameraX;
+	ray->rayY = ray->dir[1] + ray->plane[1] * ray->cameraX;
+	ray->mapX = (int)ray->playerpos[0];
+	ray->mapY = (int)ray->playerpos[1];
+	if (ray->rayX == 0)
+		ray->deltaX = 1e30;
+	else
+		ray->deltaX = fabs(1 / ray->rayX);
+	if (ray->rayY == 0)
+		ray->deltaY = 1e30;
+	else
+		ray->deltaY = fabs(1 / ray->rayY);
+}
+
+void calculate2(t_ray *ray)
+{
+	if (ray->rayX < 0)
 	{
-		ray_pointer->stepX = -1;
-		ray_pointer->sideX = (ray_pointer->playerpos[0] - ray_pointer->mapX) * ray_pointer->deltaX;
+		ray->stepX = -1;
+		ray->sideX = (ray->playerpos[0]\
+		 - ray->mapX) * ray->deltaX;
 	}
 	else
 	{
-		ray_pointer->stepX = 1;
-		ray_pointer->sideX = (ray_pointer->mapX + 1.0 - ray_pointer->playerpos[0]) * ray_pointer->deltaX;
+		ray->stepX = 1;
+		ray->sideX = (ray->mapX + 1.0\
+		 - ray->playerpos[0]) * ray->deltaX;
 	}
-	if (ray_pointer->rayY < 0)
+	if (ray->rayY < 0)
 	{
-		ray_pointer->stepY = -1;
-		ray_pointer->sideY = (ray_pointer->playerpos[1] - ray_pointer->mapY) * ray_pointer->deltaY;
+		ray->stepY = -1;
+		ray->sideY = (ray->playerpos[1]\
+		 - ray->mapY) * ray->deltaY;
 	}
 	else
 	{
-		ray_pointer->stepY = 1;
-		ray_pointer->sideY = (ray_pointer->mapY + 1.0 - ray_pointer->playerpos[1]) * ray_pointer->deltaY;
+		ray->stepY = 1;
+		ray->sideY = (ray->mapY + 1.0\
+		 - ray->playerpos[1]) * ray->deltaY;
 	}
 }
 
-void camera_man(t_ray *ray_pointer)
+void calculate3(t_ray *ray, t_map *map)
 {
-	if(ray_pointer->side == 0)
-		ray_pointer->perp_wall = (ray_pointer->sideX - ray_pointer->deltaX);
-	else
-		ray_pointer->perp_wall = (ray_pointer->sideY - ray_pointer->deltaY);
-}
-
-void	dda(t_data *data, t_ray *ray_pointer)
-{
-	ray_pointer->hit = 0;
-	while (ray_pointer->hit == 0)
+	ray->hit = 0;
+	while (ray->hit == 0)
 	{
-		if (ray_pointer->sideX < ray_pointer->sideY)
+		if (ray->sideX < ray->sideY)
 		{
-			ray_pointer->sideX += ray_pointer->deltaX;
-			ray_pointer->mapX += ray_pointer->stepX;
-			ray_pointer->side = 0;
+			ray->sideX += ray->deltaX;
+			ray->mapX += ray->stepX;
+			ray->side = 0;
 		}
 		else
 		{
-			ray_pointer->sideY += ray_pointer->deltaY;
-			ray_pointer->mapY += ray_pointer->stepY;
-			ray_pointer->side = 1;
+			ray->sideY += ray->deltaY;
+			ray->mapY += ray->stepY;
+			ray->side = 1;
 		}
-		if (ray_pointer->mapX >= 0 && ray_pointer->mapX < data->map.map_width &&\
-		 ray_pointer->mapY >= 0 && ray_pointer->mapY < data->map.map_height)
-		{
-			if(data->map.map[ray_pointer->mapX][ray_pointer->mapY] != '0')
-				ray_pointer->hit = 1;
-		}
-		else
-			ft_error("ERROR: Index outside of matrix limits");
+		if (map->map[ray->mapX][ray->mapY] != '0')
+			ray->hit = 1;
 	}
 }
 
-void	ray_line(t_ray *ray_pointer)
-{
-	ray_pointer->lineHeight = (int)(h / ray_pointer->perp_wall);
-	ray_pointer->drawStart = (-1 * ray_pointer->lineHeight) / 2 + h / 2;
-	if(ray_pointer->drawStart < 0)
-		ray_pointer->drawStart = 0;
-	ray_pointer->drawEnd = ray_pointer->lineHeight / 2 + h / 2;
-	if(ray_pointer->drawEnd >= h)
-		ray_pointer->drawEnd = h - 1;
-}
-
-void	ray_color(t_data *data, t_ray *ray_pointer, int x)
+void calculate4(t_data *data, t_ray *ray, int x)
 {
 	int color;
 
-		color = 0xFFFF00; // yellow
-	if (ray_pointer->side == 1)
+	if (ray->side == 0)
+		ray->perp_wall = (ray->sideX - ray->deltaX);
+	else
+		ray->perp_wall = (ray->sideY - ray->deltaY);
+	
+	ray->lineHeight = (int)(h / ray->perp_wall);
+	
+	ray->drawStart = -ray->lineHeight / 2 + h / 2;
+	if (ray->drawStart < 0)
+		ray->drawStart = 0;
+	ray->drawEnd = ray->lineHeight / 2 + h / 2;
+	if (ray->drawEnd >= h)
+		ray->drawEnd = h - 1;
+
+	color = 0xFF0000;
+
+	if (ray->side == 1)
 		color = divideColorByValue(color, 2);
-	verline(data, x, ray_pointer->drawStart, ray_pointer->drawEnd, color);
+
+	verline(data, x, ray->drawStart,\
+	 ray->drawEnd, color);
 }
 
-void render(t_data *data)
+void raycaster(t_data *data)
 {
 	int x;
-	
-	x = 0;
-    while (x < w)
-    {
-		config_ray(&data->ray, x);
-		side_step(&data->ray);
-		dda(data, &data->ray);
-		camera_man(&data->ray);
-		ray_line(&data->ray);
-		ray_color(data, &data->ray, x);
-		x++;
+
+	x = -1;
+	while (++x < w)
+	{
+		calculate1(&data->ray, x);
+		calculate2(&data->ray);
+		calculate3(&data->ray, &data->map);
+		calculate4(data, &data->ray, x);
 	}
-	mlx_put_image_to_window(data->mlxdata.mlx, data->mlxdata.mlx_win, data->mlxdata.img, 0, 0);
+	mlx_put_image_to_window(data->mlxdata.mlx, \
+	data->mlxdata.mlx_win, data->mlxdata.img, 0, 0);
 }
 
 int game(t_data *data)
 {
-	render(data);
+	raycaster(data);
 	return (0);
 }

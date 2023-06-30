@@ -27,12 +27,13 @@ NAME 		= cub3d
 
 LIBFT		= ./libft/libft.a
 
-SRCS		= ./sources/main.c ./sources/treat_initial_errors/treat_args_errors.c ./sources/utils/error.c ./sources/utils/utils.c ./sources/utils/utils2.c  tests_purpose_functions.c\
+SRCS		= ./sources/main.c ./sources/treat_initial_errors/treat_args_errors.c ./sources/utils/error.c ./sources/utils/utils.c\
+ ./sources/utils/utils2.c tests_purpose_functions.c\
  ./sources/read_get_validate/get_colors_textures.c ./sources/read_get_validate/read_map.c ./sources/read_get_validate/validate_colors_textures.c\
  ./sources/read_get_validate/split_colors.c ./sources/read_get_validate/split_textures.c ./sources/read_get_validate/validate_map.c\
  ./sources/read_get_validate/test_colors.c ./sources/read_get_validate/get_map.c ./sources/read_get_validate/get_n_validate.c\
- ./sources/init_mlx/init_mlx.c ./sources/raycasting/get_info.c ./sources/free_functions/free_basic.c\
- ./sources/read_get_validate/test_colors_aux.c ./sources/raycasting/raycasting_no_textures.c ./sources/raycasting/raycaster.c
+ ./sources/init_mlx/init_mlx.c ./sources/raycasting/get_info.c ./sources/free_functions/free_functions.c\
+ ./sources/read_get_validate/test_colors_aux.c ./sources/raycasting/raycaster.c
 
 OBJS		= $(SRCS:.c=.o)
 

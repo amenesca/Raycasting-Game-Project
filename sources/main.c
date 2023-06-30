@@ -35,7 +35,8 @@ int main(int argc, char *argv[])
 	mlx_hook(data.mlxdata.mlx_win, 17, 1L << 2, &close_game, &data.mlxdata);
 //	mlx_loop_hook(data.mlxdata.mlx, &game, &data);
 //	raycasting_no_textures(&data);
-	game(&data);
+//	game(&data);
+	divided_raycasting(&data);
 	mlx_loop(data.mlxdata.mlx);
 	free_all(&data.map);
 	return (0);

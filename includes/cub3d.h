@@ -177,6 +177,7 @@ int game(t_data *data);
 
 //raycasting_no_textures
 void raycasting_no_textures(t_data *data);
+void divided_raycasting(t_data *data);
 
 // ****** Funcoes para testar coisas ****** apagar depois
 

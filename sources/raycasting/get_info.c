@@ -26,12 +26,12 @@ static void set_plane(char c, t_ray *ray)
 	}
 	else if (c == 'W')
 	{
-		ray->plane[0] = 0.66;
+		ray->plane[0] = -0.66;
 		ray->plane[1] = 0;
 	}
 	else if (c == 'E')
 	{
-		ray->plane[0] = -0.66;
+		ray->plane[0] = 0.66;
 		ray->plane[1] = 0;
 	}
 }

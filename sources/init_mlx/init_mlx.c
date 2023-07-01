@@ -34,6 +34,7 @@ int init_data(t_data *data)
 	data->ray.lineHeight = 0;
 	data->ray.drawStart = 0;
 	data->ray.drawEnd = 0;
+	data->ray.flag = 1;
 	init_mlx(data);
 	return (0);
 }

@@ -73,6 +73,7 @@ typedef struct s_ray
 	double		deltaY;
 	double		cameraX;
 	double		perp_wall;
+	int			flag;
 } t_ray;
 
 typedef struct s_data
@@ -145,6 +146,7 @@ int		get_info(t_data *data);
 int		divideColorByValue(int color, int value);
 int		game(t_data *data);
 void	raycaster(t_data *data);
+int		handle_keys(int keycode, t_data *data);
 
 // ****** Funcoes para testar coisas ****** apagar depois
 

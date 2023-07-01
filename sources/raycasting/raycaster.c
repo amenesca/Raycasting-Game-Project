@@ -148,6 +148,10 @@ void raycaster(t_data *data)
 
 int game(t_data *data)
 {
-	raycaster(data);
+	if (data->ray.flag == 1)
+	{
+		raycaster(data);
+		data->ray.flag = 0;
+	}
 	return (0);
 }

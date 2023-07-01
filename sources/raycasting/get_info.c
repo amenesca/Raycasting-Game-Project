@@ -16,23 +16,23 @@ static void set_plane(char c, t_ray *ray)
 {
 	if (c == 'N')
 	{
-		ray->plane[0] = 0.66;
-		ray->plane[1] = 0;
+		ray->plane[0] = 0;
+		ray->plane[1] = 0.66;
 	}
 	else if (c == 'S')
+	{
+		ray->plane[0] = 0;
+		ray->plane[1] = -0.66;
+	}
+	else if (c == 'W')
 	{
 		ray->plane[0] = -0.66;
 		ray->plane[1] = 0;
 	}
-	else if (c == 'W')
-	{
-		ray->plane[0] = 0;
-		ray->plane[1] = 0.66;
-	}
 	else if (c == 'E')
 	{
-		ray->plane[0] = 0;
-		ray->plane[1] = -0.66;
+		ray->plane[0] = 0.66;
+		ray->plane[1] = 0;
 	}
 }
 
@@ -40,23 +40,23 @@ static void set_dir(char c, t_ray *ray)
 {
 	if (c == 'N')
 	{
-		ray->dir[0] = 0;
-		ray->dir[1] = 1;
+		ray->dir[0] = -1;
+		ray->dir[1] = 0.00000000001;
 	}
 	else if (c == 'S')
 	{
-		ray->dir[0] = 0;
-		ray->dir[1] = -1;
+		ray->dir[0] = 1;
+		ray->dir[1] = 0.00000000001;
 	}
 	else if (c == 'W')
 	{
-		ray->dir[0] = -1;
-		ray->dir[1] = 0;
+		ray->dir[0] = 0.00000000001;
+		ray->dir[1] = -1;
 	}
 	else if (c == 'E')
 	{
-		ray->dir[0] = 1;
-		ray->dir[1] = 0;
+		ray->dir[0] = 0.00000000001;
+		ray->dir[1] = 1;
 	}
 }
 

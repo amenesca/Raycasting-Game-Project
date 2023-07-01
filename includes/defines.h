@@ -17,4 +17,27 @@
 #define WHITE_PIXEL 0xFFFFFF
 #define  BLACK_PIXEL 0x000000
 
+# ifdef __linux__
+
+enum	e_keycode
+{
+	UP = 119,
+	DOWN = 115,
+	LEFT = 97,
+	RIGHT = 100,
+	KEY_ESC = 65307
+};
+# else
+
+enum	e_keycode
+{
+	UP = 13,
+	DOWN = 1,
+	LEFT = 0,
+	RIGHT = 2,
+	KEY_ESC = 53
+};
+# endif
+
+
 #endif

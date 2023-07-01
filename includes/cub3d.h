@@ -25,30 +25,7 @@
 # include <math.h>
 # include <fcntl.h>
 # include <unistd.h>
-# include <stdio.h> // remover depois
-
-# ifdef __linux__
-
-enum	e_keycode
-{
-	UP = 119,
-	DOWN = 115,
-	LEFT = 97,
-	RIGHT = 100,
-	KEY_ESC = 65307
-};
-# else
-
-enum	e_keycode
-{
-	UP = 13,
-	DOWN = 1,
-	LEFT = 0,
-	RIGHT = 2,
-	KEY_ESC = 53
-};
-# endif
-
+# include <stdio.h> // remover depois !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 typedef struct s_map
 {
 	char		**map;
@@ -76,26 +53,27 @@ typedef struct s_mlxdata
 
 typedef struct s_ray
 {
-	double	playerpos[2];
-	double	dir[2];
-	double	plane[2];
-	int		mapX;
-	int		mapY;
-	int		hit;
-	int stepX;
-	int stepY; //was there a wall hit?
-	int side;
-	int drawEnd;
-	int drawStart;
-	int lineHeight;
-	double rayX;
-	double rayY;
-	double sideX;
-	double sideY;
-	double deltaX;
-	double deltaY;
-	double cameraX;
-	double perp_wall;
+	double		playerpos[2];
+	double		dir[2];
+	double		plane[2];
+	int			mapX;
+	int			mapY;
+	int			hit;
+	int			stepX;
+	int			stepY; //was there a wall hit?
+	int			side;
+	int			drawEnd;
+	int			drawStart;
+	int			lineHeight;
+	double		rayX;
+	double		rayY;
+	double		sideX;
+	double		sideY;
+	double		deltaX;
+	double		deltaY;
+	double		cameraX;
+	double		perp_wall;
+	int			flag;
 } t_ray;
 
 typedef struct s_data
@@ -143,40 +121,32 @@ void	free_array(char **array);
 int		count_array(char **array);
 int		init_pointers(t_map *map);
 void	free_all(t_map *map);
-int	ft_error(char *s);
+int		ft_error(char *s);
 
 // validate_map.c
 int		validate_map(t_map *map);
 
 //init_mlx.c
-int init_data(t_data *data);
-int init_mlx(t_data *data);
-int	key_hook(int keycode, t_mlxdata *game);
-int	close_game(t_mlxdata *game);
+int		init_data(t_data *data);
+int		init_mlx(t_data *data);
+int		key_hook(int keycode, t_mlxdata *game);
+int		close_game(t_mlxdata *game);
 
-// get_info.c
-int		get_info(t_data *data);
-void verLine(t_data *data, int x, int y1, int y2, int color);
-int divideColorByValue(int color, int value);
-void	render(t_data *data);
-int deal_key(int keycode, t_mlxdata *data, double moveSpeed, double rotSpeed);
+//deal_key
+int 	deal_key(int keycode, t_mlxdata *data, double moveSpeed, double rotSpeed);
 
 //free_functions
-void free_basic(t_map *map);
-void free_text_col(t_map *map);
-void free_text_col_array(t_map *map);
-void free_ceil_floor(t_map *map);
+void	free_basic(t_map *map);
+void	free_text_col(t_map *map);
+void	free_text_col_array(t_map *map);
+void	free_ceil_floor(t_map *map);
 
 //raycasting
-void	side_step(t_data *data);
-void	dda(t_data *data);
-void config_ray(t_data *data, int x);
-void camera_man(t_data *data);
-void	ray_line(t_data *data);
-int game(t_data *data);
-
-//raycasting_no_textures
-void raycasting_no_textures(t_data *data);
+int		get_info(t_data *data);
+int		divideColorByValue(int color, int value);
+int		game(t_data *data);
+void	raycaster(t_data *data);
+int		handle_keys(int keycode, t_data *data);
 
 // ****** Funcoes para testar coisas ****** apagar depois
 

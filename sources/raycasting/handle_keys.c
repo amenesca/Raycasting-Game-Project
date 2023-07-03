@@ -6,10 +6,10 @@ void paint_it_black(t_data *data)
 	int y;
 
 	y = -1;
-	while (++y < h)
+	while (++y < screenHeight)
 	{
 		x = -1;
-		while (++x < w)
+		while (++x < screenWidth)
 			ft_mlx_pixel_put(data, x, y, 0x000000);
 	}
 	return ;
@@ -17,8 +17,8 @@ void paint_it_black(t_data *data)
 
 int handle_keys(int keycode, t_data *data)
 {
-	double moveSpeed = 0.5;
-	double rotSpeed = 0.5;
+	long double moveSpeed = 0.5;
+	double rotSpeed = 0.2;
 
 	if (keycode == 119) //up
 	{

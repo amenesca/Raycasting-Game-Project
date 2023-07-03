@@ -39,6 +39,18 @@ typedef struct s_map
 	int			map_height;
 	int			map_width;
 } t_map;
+
+typedef struct s_img
+{
+	void		*img;
+	char		*addr;
+	int			bits;
+	int			line;
+	int			endian;
+	int			tex_height;
+	int			tex_width;
+} t_img;
+
 typedef struct s_mlxdata
 {
 	void		*mlx;
@@ -49,6 +61,10 @@ typedef struct s_mlxdata
 	int			line;
 	int			finish;
 	int			endian;
+	t_img		text_N;
+	t_img		text_S;
+	t_img		text_E;
+	t_img		text_W;
 } t_mlxdata;
 
 typedef struct s_ray
@@ -75,9 +91,12 @@ typedef struct s_ray
 	double		perp_wall;
 	double		oldDirX;
 	double		oldPlaneX;
+	double		wallX;
+	int			texX;
+	double		scale;
+	double		texPos;
 	int			flag;
 } t_ray;
-
 typedef struct s_data
 {
 	t_map		map;
@@ -131,6 +150,7 @@ int		validate_map(t_map *map);
 //init_mlx.c
 int		init_data(t_data *data);
 int		init_mlx(t_data *data);
+void	ft_xpm_to_img(t_img *imgtex, t_map *map, t_mlxdata *mlxdata, int pos);
 int		key_hook(int keycode, t_mlxdata *game);
 int		close_game(t_mlxdata *game);
 

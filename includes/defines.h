@@ -9,8 +9,8 @@
 # define FLOOR
 # define CEILING
 
-# define w 640
-# define h 480
+# define screenWidth 640
+# define screenHeight 480
 
 #define GREEN_PIXEL 0x00FF00
 #define RED_PIXEL 0xFF0000

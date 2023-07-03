@@ -121,13 +121,13 @@ void calculate4(t_data *data, t_ray *ray, int x)
 	if (ray->drawEnd >= screenHeight)
 		ray->drawEnd = screenHeight - 1;
 
-/*	color = 0xFF0000;
+	color = 0xFF2599;
 
 	if (ray->side == 1)
 		color = divideColorByValue(color, 2);
 
 	verline(data, x, ray->drawStart,\
-	 ray->drawEnd, color);*/
+	 ray->drawEnd, color);
 }
 
 void	tex_x_coordinate(t_data *data, t_ray *ray)
@@ -160,14 +160,15 @@ void raycaster(t_data *data)
 	int x;
 
 	x = -1;
+	put_ceil_floor(data);
 	while (++x < screenWidth)
 	{
 		calculate1(&data->ray, x);
 		calculate2(&data->ray);
 		calculate3(&data->ray, &data->map);
 		calculate4(data, &data->ray, x);
-		tex_x_coordinate(data, &data->ray);
-		tex_color(&data->ray, &data->mlxdata);
+//		tex_x_coordinate(data, &data->ray);
+//		tex_color(&data->ray, &data->mlxdata);
 
 	}
 	mlx_put_image_to_window(data->mlxdata.mlx, \

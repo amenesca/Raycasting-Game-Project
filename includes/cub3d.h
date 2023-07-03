@@ -96,6 +96,8 @@ typedef struct s_ray
 	double		scale;
 	double		texPos;
 	int			flag;
+	int			ceil_color;
+	int			floor_color;
 } t_ray;
 typedef struct s_data
 {
@@ -153,6 +155,7 @@ int		init_mlx(t_data *data);
 void	ft_xpm_to_img(t_img *imgtex, t_map *map, t_mlxdata *mlxdata, int pos);
 int		key_hook(int keycode, t_mlxdata *game);
 int		close_game(t_mlxdata *game);
+void	ft_xpm_to_img(t_img *imgtex, t_map *map, t_mlxdata *mlxdata, int pos);
 
 //deal_key
 int 	deal_key(int keycode, t_mlxdata *data, double moveSpeed, double rotSpeed);
@@ -165,6 +168,8 @@ void	free_ceil_floor(t_map *map);
 
 //raycasting
 int		get_info(t_data *data);
+void	get_hex_colors(t_data *data);
+void	put_ceil_floor(t_data *data);
 int		divideColorByValue(int color, int value);
 int		game(t_data *data);
 void	raycaster(t_data *data);

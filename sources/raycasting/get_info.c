@@ -116,14 +116,6 @@ static int get_init_pos(t_data *data)
 int get_info(t_data *data)
 {
 	get_init_pos(data);
-// PRINTF FROM HELL ***
-/*printf("player pos x: %f\n\
-player pos y: %f\nplayer: %c\n\
-player dir x: %f\nplayer dir y %f\n\
-plane x: %f\nplane y: %f\n",\
-data->ray.playerpos[0],\
-data->ray.playerpos[1], \
-data->map.map[(int)data->ray.playerpos[1]][(int)data->ray.playerpos[0]],\
-data->ray.dir[0], data->ray.dir[1], data->ray.plane[0], data->ray.plane[1]);*/
+	get_hex_colors(data);
 	return (0);
 }

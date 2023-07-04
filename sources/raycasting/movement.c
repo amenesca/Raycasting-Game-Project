@@ -6,7 +6,7 @@
 /*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 11:44:18 by femarque          #+#    #+#             */
-/*   Updated: 2023/07/04 16:28:53 by femarque         ###   ########.fr       */
+/*   Updated: 2023/07/04 18:09:35 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void movement_y(t_data *data)
 	nextPosX = data->ray.playerpos[0] + data->ray.move_v * (data->ray.dir[0] * data->ray.moveSpeed);
 	nextPosY = data->ray.playerpos[1] + data->ray.move_v * (data->ray.dir[1] * data->ray.moveSpeed);
 
-    //if (data->map.map[(int)nextPosX][(int)data->ray.playerpos[1]] == '0')
-    data->ray.playerpos[0] = nextPosX;
-    //if (data->map.map[(int)data->ray.playerpos[0]][(int)nextPosY] == '0')
-    data->ray.playerpos[1] = nextPosY;
+    if (data->map.map[(int)nextPosX][(int)data->ray.playerpos[1]] != '1')
+    	data->ray.playerpos[0] = nextPosX;
+    if (data->map.map[(int)data->ray.playerpos[0]][(int)nextPosY] != '1')
+    	data->ray.playerpos[1] = nextPosY;
 }
 
 void movement_x(t_data *data)
@@ -34,10 +34,10 @@ void movement_x(t_data *data)
     nextPosX = data->ray.playerpos[0] + data->ray.move_h * (data->ray.plane[0] * data->ray.moveSpeed);
     nextPosY = data->ray.playerpos[1] + data->ray.move_h * (data->ray.plane[1] * data->ray.moveSpeed);
 
-    //if (data->map.map[(int)nextPosX][(int)data->ray.playerpos[1]] == '0')
-    data->ray.playerpos[0] = nextPosX;
-    //if (data->map.map[(int)data->ray.playerpos[0]][(int)nextPosY] == '0')
-    data->ray.playerpos[1] = nextPosY;
+    if (data->map.map[(int)nextPosX][(int)data->ray.playerpos[1]] != '1')
+    	data->ray.playerpos[0] = nextPosX;
+    if (data->map.map[(int)data->ray.playerpos[0]][(int)nextPosY] != '1')
+    	data->ray.playerpos[1] = nextPosY;
 }
 
 void	mov_camera(t_data *data)

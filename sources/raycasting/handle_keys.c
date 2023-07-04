@@ -11,7 +11,6 @@ int handle_keys(int keycode, t_data *data)
 			data->ray.playerpos[0] += data->ray.dir[0] * moveSpeed;
 		if (data->map.map[(int)data->ray.playerpos[0]][(int)(data->ray.playerpos[1] + data->ray.dir[1] * moveSpeed)] == '0')
 			data->ray.playerpos[1] += data->ray.dir[1] * moveSpeed;
-		data->ray.flag = 1;
 		return (0);
 	}
 	if (keycode == 115) //down
@@ -20,7 +19,6 @@ int handle_keys(int keycode, t_data *data)
 			data->ray.playerpos[0] -= data->ray.dir[0] * moveSpeed;
 		if(data->map.map[(int)(data->ray.playerpos[0])][(int)(data->ray.playerpos[1] - data->ray.dir[1] * moveSpeed)] == '0')
 			data->ray.playerpos[1] -= data->ray.dir[1] * moveSpeed;
-		data->ray.flag = 1;
 	}
 	if (keycode == 97) //left
 	{
@@ -30,7 +28,6 @@ int handle_keys(int keycode, t_data *data)
 		data->ray.oldPlaneX = data->ray.plane[0];
 		data->ray.plane[0] = data->ray.plane[0] * cos(rotSpeed) - data->ray.plane[1] * sin(rotSpeed);
 		data->ray.plane[1] = data->ray.oldPlaneX * sin(rotSpeed) + data->ray.plane[1] * cos(rotSpeed);
-		data->ray.flag = 1;
 	}
 	if (keycode == 100) // right
 	{
@@ -40,7 +37,6 @@ int handle_keys(int keycode, t_data *data)
 		data->ray.oldPlaneX = data->ray.plane[0];
 		data->ray.plane[0] = data->ray.plane[0] * cos(-rotSpeed) - data->ray.plane[1] * sin(-rotSpeed);
 		data->ray.plane[1] = data->ray.oldPlaneX * sin(-rotSpeed) + data->ray.plane[1] * cos(-rotSpeed);
-		data->ray.flag = 1;
 	}
 	return (0);
 }

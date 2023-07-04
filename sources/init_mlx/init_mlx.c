@@ -6,7 +6,7 @@
 /*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:12:21 by femarque          #+#    #+#             */
-/*   Updated: 2023/06/25 16:29:27 by femarque         ###   ########.fr       */
+/*   Updated: 2023/07/04 14:57:19 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ int init_data(t_data *data)
 	data->ray.lineHeight = 0;
 	data->ray.drawStart = 0;
 	data->ray.drawEnd = 0;
-	data->ray.flag = 1;
+	data->ray.move_v = 0;
+	data->ray.move_h = 0;
+	data->ray.turn = 0;
 	init_mlx(data);
 	return (0);
 }
@@ -62,13 +64,13 @@ int	close_game(t_mlxdata *game)
 	return (0);
 }
 
-int	key_hook(int keycode, t_mlxdata *game)
+/*int	key_hook(int keycode, t_mlxdata *game)
 {	
 	if (keycode == KEY_ESC)
 		close_game(game);
 	if (game->finish == 1)
 		close_game(game);
-	/*else
-		deal_key(keycode, game, moveSpeed, rotSpeed);*/
+	else
+		deal_key(keycode, game, moveSpeed, rotSpeed);
 	return (0);
-}
+}*/

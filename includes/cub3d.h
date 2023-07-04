@@ -6,7 +6,7 @@
 /*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:07:36 by amenesca          #+#    #+#             */
-/*   Updated: 2023/06/25 16:29:02 by femarque         ###   ########.fr       */
+/*   Updated: 2023/07/04 14:57:00 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,16 @@ typedef struct s_mlxdata
 
 typedef struct s_ray
 {
-	double		playerpos[2];
+	long double		playerpos[2];
 	double		dir[2];
-	double		plane[2];
+	double		move_v;
+	double		move_h;
+	long double		plane[2];
 	int			mapX;
 	int			mapY;
 	int			hit;
-	int			stepX;
-	int			stepY; //was there a wall hit?
+	double		stepX;
+	double		stepY; //was there a wall hit?
 	int			side;
 	int			drawEnd;
 	int			drawStart;
@@ -95,10 +97,13 @@ typedef struct s_ray
 	int			texX;
 	double		scale;
 	double		texPos;
-	int			flag;
 	int			ceil_color;
 	int			floor_color;
+	long double moveSpeed;
+	double rotSpeed;
+	double turn;
 } t_ray;
+
 typedef struct s_data
 {
 	t_map		map;
@@ -158,7 +163,13 @@ int		close_game(t_mlxdata *game);
 void	ft_xpm_to_img(t_img *imgtex, t_map *map, t_mlxdata *mlxdata, int pos);
 
 //deal_key
-int 	deal_key(int keycode, t_mlxdata *data, double moveSpeed, double rotSpeed);
+int	deal_key(int keycode, t_data *data);
+int	undeal_key(int keycode, t_data *data);
+
+//movement
+void	movement_y(t_data *data);
+void	movement_x(t_data *data);
+void	mov_camera(t_data *data);
 
 //free_functions
 void	free_basic(t_map *map);

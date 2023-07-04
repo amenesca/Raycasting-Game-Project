@@ -23,8 +23,10 @@ enum	e_keycode
 {
 	UP = 119,
 	DOWN = 115,
-	LEFT = 97,
-	RIGHT = 100,
+	A = 97,
+	D = 100,
+	LEFT = 65361,
+	RIGHT = 65363,
 	KEY_ESC = 65307
 };
 # else

@@ -6,7 +6,7 @@
 /*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:07:42 by amenesca          #+#    #+#             */
-/*   Updated: 2023/06/24 19:09:52 by femarque         ###   ########.fr       */
+/*   Updated: 2023/07/04 15:09:32 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 int main(int argc, char *argv[]) 
 {
 	t_data data;
+
+	data.ray.moveSpeed = 0.5;
 
 	if (treat_args_error(argc, argv) != 0)
 		return (-1);
@@ -31,11 +33,11 @@ int main(int argc, char *argv[])
 	
 	get_info(&data);
 	init_data(&data);
-	mlx_hook(data.mlxdata.mlx_win, 2, 1L << 0, &key_hook, &data.mlxdata);
-	mlx_hook(data.mlxdata.mlx_win, 17, 1L << 2, &close_game, &data.mlxdata);
-	mlx_key_hook(data.mlxdata.mlx_win, handle_keys, &data);
+	mlx_hook(data.mlxdata.mlx_win, 2, (1L << 0), deal_key, &data);
+	mlx_hook(data.mlxdata.mlx_win, 3, (1L << 1), undeal_key, &data);
+	mlx_hook(data.mlxdata.mlx_win, 17, (1L << 2), close_game, &data.mlxdata);
+	//mlx_key_hook(data.mlxdata.mlx_win, handle_keys, &data);
 	mlx_loop_hook(data.mlxdata.mlx, &game, &data);
-
 	mlx_loop(data.mlxdata.mlx);
 	free_all(&data.map);
 	return (0);

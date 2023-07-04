@@ -3,8 +3,8 @@ SO ./sources/textures/bat_brick.xpm
 WE ./sources/textures/stonewallcreepy.xpm
 EA ./sources/textures/brickwallcracked.xpm
 
-F 255,0,0 
-C 10,250,0
+F 166,166,166
+C 62,62,62
 
 111111111111111111111111
 100000000000000000000001

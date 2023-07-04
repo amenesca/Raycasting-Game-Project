@@ -177,10 +177,9 @@ void raycaster(t_data *data)
 
 int game(t_data *data)
 {
-	if (data->ray.flag == 1)
-	{
-		raycaster(data);
-		data->ray.flag = 0;
-	}
+	raycaster(data);
+	movement_y(data);
+	movement_x(data);
+	mov_camera(data);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:07:42 by amenesca          #+#    #+#             */
-/*   Updated: 2023/07/04 15:09:32 by femarque         ###   ########.fr       */
+/*   Updated: 2023/07/04 16:23:33 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 {
 	t_data data;
 
-	data.ray.moveSpeed = 0.5;
+	data.ray.moveSpeed = 0.003;
 
 	if (treat_args_error(argc, argv) != 0)
 		return (-1);

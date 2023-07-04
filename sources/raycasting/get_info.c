@@ -6,7 +6,7 @@
 /*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 19:08:19 by femarque          #+#    #+#             */
-/*   Updated: 2023/06/25 16:18:47 by femarque         ###   ########.fr       */
+/*   Updated: 2023/07/04 16:20:08 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ static void set_plane(char c, t_ray *ray)
 	}
 	else if (c == 'W')
 	{
-		ray->plane[0] = -0.66;
+		ray->plane[0] = 0.66;
 		ray->plane[1] = 0;
 	}
 	else if (c == 'E')
 	{
-		ray->plane[0] = 0.66;
+		ray->plane[0] = -0.66;
 		ray->plane[1] = 0;
 	}
 }

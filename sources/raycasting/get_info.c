@@ -6,7 +6,7 @@
 /*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 19:08:19 by femarque          #+#    #+#             */
-/*   Updated: 2023/06/25 16:18:47 by femarque         ###   ########.fr       */
+/*   Updated: 2023/07/04 16:20:08 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ static void set_plane(char c, t_ray *ray)
 	if (c == 'N')
 	{
 		ray->plane[0] = 0;
-		ray->plane[1] = 0.66;
+		ray->plane[1] = -0.66;
 	}
 	else if (c == 'S')
 	{
 		ray->plane[0] = 0;
-		ray->plane[1] = -0.66;
+		ray->plane[1] = 0.66;
 	}
 	else if (c == 'W')
 	{
@@ -102,8 +102,8 @@ static int get_init_pos(t_data *data)
 		{
 			if (is_player(data->map.map[y][x], &data->ray))
 			{
-				data->ray.playerpos[0] = x + 0.5f; //existem motivos para o +0.5
-				data->ray.playerpos[1] = y + 0.5f; //existem motivos para o +0.5
+				data->ray.playerpos[0] = x + 0.5; //existem motivos para o +0.5
+				data->ray.playerpos[1] = y + 0.5; //existem motivos para o +0.5
 				return (0);
 			}
 			x++;
@@ -116,14 +116,6 @@ static int get_init_pos(t_data *data)
 int get_info(t_data *data)
 {
 	get_init_pos(data);
-// PRINTF FROM HELL ***
-/*printf("player pos x: %f\n\
-player pos y: %f\nplayer: %c\n\
-player dir x: %f\nplayer dir y %f\n\
-plane x: %f\nplane y: %f\n",\
-data->ray.playerpos[0],\
-data->ray.playerpos[1], \
-data->map.map[(int)data->ray.playerpos[1]][(int)data->ray.playerpos[0]],\
-data->ray.dir[0], data->ray.dir[1], data->ray.plane[0], data->ray.plane[1]);*/
+	get_hex_colors(data);
 	return (0);
 }

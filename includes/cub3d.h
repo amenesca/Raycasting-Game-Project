@@ -185,8 +185,6 @@ void	put_ceil_floor(t_data *data);
 int		divideColorByValue(int color, int value);
 int		game(t_data *data);
 void	raycaster(t_data *data);
-int		handle_keys(int keycode, t_data *data);
-void	verline(t_data *data, int x, int start, int end, int color);
 void    ft_mlx_pixel_put(t_data *data, int x, int y, int pixel);
 
 // ****** Funcoes para testar coisas ****** apagar depois

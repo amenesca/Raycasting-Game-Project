@@ -49,6 +49,7 @@ void	raycaster(t_data *data)
 		calculate2(&data->ray);
 		calculate3(&data->ray, &data->map);
 		calculate4(&data->ray);
+		choose_texture(data);
 		tex_x_coordinate(&data->ray);
 		tex_color(data, x);
 	}

@@ -99,6 +99,7 @@ typedef struct s_ray {
 	double	move_speed;
 	double	rot_speed;
 	double	turn;
+	t_img	*texture;
 }	t_ray;
 
 typedef struct s_data {
@@ -192,5 +193,6 @@ void	calculate4(t_ray *ray);
 void	calculate3(t_ray *ray, t_map *map);
 void	calculate2(t_ray *ray);
 void	calculate1(t_ray *ray, int x);
+void	choose_texture(t_data *data);
 
 #endif

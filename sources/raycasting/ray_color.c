@@ -37,6 +37,24 @@ int	get_pixel_color(t_img *img, int x, int y)
 	return (color);
 }
 
+void choose_texture(t_data *data)
+{
+	if (data->ray.side == 0)
+	{
+		if (data->ray.rayx < 0)
+			data->ray.texture = &data->mlx.text_n;
+		else
+			data->ray.texture = &data->mlx.text_s;
+	}
+	else
+	{
+		if (data->ray.rayy < 0)
+			data->ray.texture = &data->mlx.text_w;
+		else
+			data->ray.texture = &data->mlx.text_e;
+    }
+}
+
 void	tex_color(t_data *data, int x)
 {
 	int	y;
@@ -52,7 +70,7 @@ void	tex_color(t_data *data, int x)
 	{
 		data->ray.tex_y = (int)data->ray.tex_pos & (64 - 1);
 		data->ray.tex_pos += data->ray.scale;
-		color = get_pixel_color(&data->mlx.text_n, data->ray.tex_x, \
+		color = get_pixel_color(data->ray.texture, data->ray.tex_x, \
 		data->ray.tex_y);
 		ft_mlx_pixel_put(data, x, y, color);
 		y++;

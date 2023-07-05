@@ -6,7 +6,7 @@
 /*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 13:28:36 by femarque          #+#    #+#             */
-/*   Updated: 2023/07/05 15:56:35 by femarque         ###   ########.fr       */
+/*   Updated: 2023/07/05 16:17:46 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	get_pixel_color(t_img *img, int x, int y)
 	return (color);
 }
 
-void choose_texture(t_data *data)
+void	choose_texture(t_data *data)
 {
 	if (data->ray.side == 0)
 	{
@@ -52,7 +52,7 @@ void choose_texture(t_data *data)
 			data->ray.texture = &data->mlx.text_w;
 		else
 			data->ray.texture = &data->mlx.text_e;
-    }
+	}
 }
 
 void	tex_color(t_data *data, int x)

@@ -6,7 +6,7 @@
 /*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:07:36 by amenesca          #+#    #+#             */
-/*   Updated: 2023/07/05 15:54:32 by femarque         ###   ########.fr       */
+/*   Updated: 2023/07/05 19:50:52 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 # define CUB3D_H
 
 # ifdef __linux__
-#  include "../mlx_linux/mlx.h"
+#  include "../libs/mlx_linux/mlx.h"
 # else
-#  include "../mlx/mlx.h"
+#  include "../libs/mlx/mlx.h"
 # endif
 
-# include "../libft/libft.h"
+# include "../libs/libft/libft.h"
 # include "./defines.h"
 # include <math.h>
 # include <fcntl.h>

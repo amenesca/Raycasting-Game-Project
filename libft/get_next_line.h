@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 14:35:50 by amenesca          #+#    #+#             */
-/*   Updated: 2023/05/18 14:26:08 by amenesca         ###   ########.fr       */
+/*   Updated: 2023/07/05 15:59:31 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-#define BUFFER_SIZE 42
+# define BUFFER_SIZE 42
 
 char	*get_next_line(int fd);
 size_t	my_strlen(const char *s);

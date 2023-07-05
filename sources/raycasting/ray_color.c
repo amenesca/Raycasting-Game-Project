@@ -6,7 +6,7 @@
 /*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 13:28:36 by femarque          #+#    #+#             */
-/*   Updated: 2023/07/05 13:34:56 by femarque         ###   ########.fr       */
+/*   Updated: 2023/07/05 15:56:35 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,17 @@ void	tex_color(t_data *data, int x)
 	int	color;
 
 	y = data->ray.draw_start;
-	if (y >= screenHeight || x >= screenWidth || y < 0 || x < 0)
+	if (y >= SCREEN_HEIGHT || x >= SCREEN_WIDTH || y < 0 || x < 0)
 		return ;
 	data->ray.scale = 1.0 * (double)64 / data->ray.line_height;
-	data->ray.texPos = (data->ray.draw_start - screenHeight / 2 + \
+	data->ray.tex_pos = (data->ray.draw_start - SCREEN_HEIGHT / 2 + \
 	data->ray.line_height / 2) * data->ray.scale;
 	while (y < data->ray.draw_end)
 	{
-		data->ray.texY = (int)data->ray.texPos & (64 - 1);
-		data->ray.texPos += data->ray.scale;
-		color = get_pixel_color(&data->mlx.text_N, data->ray.texX, \
-		data->ray.texY);
+		data->ray.tex_y = (int)data->ray.tex_pos & (64 - 1);
+		data->ray.tex_pos += data->ray.scale;
+		color = get_pixel_color(&data->mlx.text_n, data->ray.tex_x, \
+		data->ray.tex_y);
 		ft_mlx_pixel_put(data, x, y, color);
 		y++;
 	}

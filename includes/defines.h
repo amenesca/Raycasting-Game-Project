@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   defines.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/05 15:54:55 by femarque          #+#    #+#             */
+/*   Updated: 2023/07/05 15:57:10 by femarque         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef DEFINES_H
 # define DEFINES_H
 
@@ -9,13 +21,8 @@
 # define FLOOR
 # define CEILING
 
-# define screenWidth 640
-# define screenHeight 480
-
-#define GREEN_PIXEL 0x00FF00
-#define RED_PIXEL 0xFF0000
-#define WHITE_PIXEL 0xFFFFFF
-#define  BLACK_PIXEL 0x000000
+# define SCREEN_WIDTH 640
+# define SCREEN_HEIGHT 480
 
 # ifdef __linux__
 
@@ -40,6 +47,5 @@ enum	e_keycode
 	KEY_ESC = 53
 };
 # endif
-
 
 #endif

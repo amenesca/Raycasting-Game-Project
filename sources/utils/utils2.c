@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils2.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/05 15:38:02 by femarque          #+#    #+#             */
+/*   Updated: 2023/07/05 15:38:25 by femarque         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3d.h"
 
 int	init_pointers(t_map *map)
@@ -5,7 +17,6 @@ int	init_pointers(t_map *map)
 	int	i;
 
 	i = 0;
-
 	map->textures = (char **)ft_calloc(sizeof(char *), 5);
 	if (map->textures == NULL)
 		return (-1);
@@ -19,7 +30,7 @@ int	init_pointers(t_map *map)
 	return (0);
 }
 
-void free_all(t_map *map)
+void	free_all(t_map *map)
 {
 	if (map->file_read)
 		free_array(map->file_read);

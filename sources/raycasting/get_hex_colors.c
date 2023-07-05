@@ -6,7 +6,7 @@
 /*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 12:08:24 by femarque          #+#    #+#             */
-/*   Updated: 2023/07/05 13:04:47 by femarque         ###   ########.fr       */
+/*   Updated: 2023/07/05 15:56:35 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ void	put_ceil_floor(t_data *data)
 	int	y;
 
 	y = -1;
-	while (++y < screenHeight)
+	while (++y < SCREEN_HEIGHT)
 	{
 		x = -1;
-		while (++x < screenWidth)
+		while (++x < SCREEN_WIDTH)
 		{
-			if (y < screenHeight / 2)
+			if (y < SCREEN_HEIGHT / 2)
 				ft_mlx_pixel_put(data, x, y, data->ray.ceil_color);
 			else
 				ft_mlx_pixel_put(data, x, y, data->ray.floor_color);

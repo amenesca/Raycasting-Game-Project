@@ -6,7 +6,7 @@
 #    By: femarque <femarque@student.42.rio>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:08:11 by amenesca          #+#    #+#              #
-#    Updated: 2023/07/04 13:57:11 by femarque         ###   ########.fr        #
+#    Updated: 2023/07/05 14:01:42 by femarque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRCS		= ./sources/main.c ./sources/treat_initial_errors/treat_args_errors.c ./so
  ./sources/init_mlx/init_mlx.c ./sources/raycasting/get_info.c ./sources/free_functions/free_functions.c\
  ./sources/read_get_validate/test_colors_aux.c ./sources/raycasting/raycaster.c\
  ./sources/init_mlx/xpm_to_img.c ./sources/raycasting/get_hex_colors.c ./sources/raycasting/movement.c\
+ ./sources/raycasting/ray_color.c ./sources/raycasting/raycast_calculation.c ./sources/read_get_validate/validate_map2.c
 
 OBJS		= $(SRCS:.c=.o)
 

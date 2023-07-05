@@ -6,7 +6,7 @@
 /*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:07:36 by amenesca          #+#    #+#             */
-/*   Updated: 2023/07/04 14:57:00 by femarque         ###   ########.fr       */
+/*   Updated: 2023/07/05 14:09:35 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct s_img
 	int			tex_width;
 } t_img;
 
-typedef struct s_mlxdata
+typedef struct s_mlx
 {
 	void		*mlx;
 	void		*mlx_win;
@@ -65,7 +65,7 @@ typedef struct s_mlxdata
 	t_img		text_S;
 	t_img		text_E;
 	t_img		text_W;
-} t_mlxdata;
+} t_mlx;
 
 typedef struct s_ray
 {
@@ -80,9 +80,9 @@ typedef struct s_ray
 	double		stepX;
 	double		stepY; //was there a wall hit?
 	int			side;
-	int			drawEnd;
-	int			drawStart;
-	int			lineHeight;
+	int			draw_end;
+	int			draw_start;
+	int			line_height;
 	double		rayX;
 	double		rayY;
 	double		sideX;
@@ -91,8 +91,8 @@ typedef struct s_ray
 	double		deltaY;
 	double		cameraX;
 	double		perp_wall;
-	double		oldDirX;
-	double		oldPlaneX;
+	double		old_dir_x;
+	double		old_plane_x;
 	double		wallX;
 	int			texX;
 	int			texY;
@@ -108,9 +108,16 @@ typedef struct s_ray
 typedef struct s_data
 {
 	t_map		map;
-	t_mlxdata	mlxdata;
+	t_mlx	mlx;
 	t_ray		ray;
 } t_data;
+
+
+//validate_map
+int	is_valid_char(char c);
+int	validade_char(t_map *map);
+void	fill_out_spaces(t_map *map);
+void	get_map_width(t_map *map);
 
 // treat_args_error.c
 int		treat_args_error(int argc, char *argv[]);
@@ -139,9 +146,7 @@ int		only_numbers(char **color);
 
 //get_map.c
 int		get_map(t_map *map);
-
-// get_n_validate.c
-int		get_n_validate(t_map *map);
+int	get_n_validate(t_map *map);
 
 // utils
 int		ft_strcmp(const char *s1, const char *s2);
@@ -158,13 +163,19 @@ int		validate_map(t_map *map);
 //init_mlx.c
 int		init_data(t_data *data);
 int		init_mlx(t_data *data);
-void	ft_xpm_to_img(t_img *imgtex, t_map *map, t_mlxdata *mlxdata, int pos);
-int		key_hook(int keycode, t_mlxdata *game);
-int		close_game(t_mlxdata *game);
+void	ft_xpm_to_img(t_img *imgtex, t_map *map, t_mlx *mlx, int pos);
+int		key_hook(int keycode, t_mlx *game);
+int		close_game(t_mlx *game);
 
 //deal_key
 int	deal_key(int keycode, t_data *data);
 int	undeal_key(int keycode, t_data *data);
+
+//colors
+void	tex_color(t_data *data, int x);
+int	divide_color_by_value(int color, int value);
+int	get_pixel_color(t_img *img, int x, int y);
+
 
 //movement
 void	movement_y(t_data *data);
@@ -181,10 +192,14 @@ void	free_ceil_floor(t_map *map);
 int		get_info(t_data *data);
 void	get_hex_colors(t_data *data);
 void	put_ceil_floor(t_data *data);
-int		divideColorByValue(int color, int value);
+int		divide_color_by_value(int color, int value);
 int		game(t_data *data);
 void	raycaster(t_data *data);
 void    ft_mlx_pixel_put(t_data *data, int x, int y, int pixel);
+void	calculate4(t_ray *ray);
+void	calculate3(t_ray *ray, t_map *map);
+void	calculate2(t_ray *ray);
+void	calculate1(t_ray *ray, int x);
 
 // ****** Funcoes para testar coisas ****** apagar depois
 

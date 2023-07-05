@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free_functions.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/05 11:52:15 by femarque          #+#    #+#             */
+/*   Updated: 2023/07/05 11:53:12 by femarque         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3d.h"
 
-void free_basic(t_map *map)
+void	free_basic(t_map *map)
 {
 	free_array(map->textures);
 	free_array(map->colors);
@@ -8,14 +20,14 @@ void free_basic(t_map *map)
 	return ;
 }
 
-void free_text_col(t_map *map)
+void	free_text_col(t_map *map)
 {
 	free(map->textures);
 	free(map->colors);
 	return ;
 }
 
-void free_ceil_floor(t_map *map)
+void	free_ceil_floor(t_map *map)
 {
 	if (map->floor)
 		free(map->floor);
@@ -23,9 +35,9 @@ void free_ceil_floor(t_map *map)
 		free(map->ceiling);
 }
 
-void free_text_col_array(t_map *map)
+void	free_text_col_array(t_map *map)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 4)

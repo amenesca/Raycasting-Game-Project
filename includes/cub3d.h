@@ -161,7 +161,6 @@ int		init_mlx(t_data *data);
 void	ft_xpm_to_img(t_img *imgtex, t_map *map, t_mlxdata *mlxdata, int pos);
 int		key_hook(int keycode, t_mlxdata *game);
 int		close_game(t_mlxdata *game);
-void	ft_xpm_to_img(t_img *imgtex, t_map *map, t_mlxdata *mlxdata, int pos);
 
 //deal_key
 int	deal_key(int keycode, t_data *data);

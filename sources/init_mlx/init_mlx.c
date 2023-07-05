@@ -63,14 +63,3 @@ int	close_game(t_mlxdata *game)
 	exit(0);
 	return (0);
 }
-
-/*int	key_hook(int keycode, t_mlxdata *game)
-{	
-	if (keycode == KEY_ESC)
-		close_game(game);
-	if (game->finish == 1)
-		close_game(game);
-	else
-		deal_key(keycode, game, moveSpeed, rotSpeed);
-	return (0);
-}*/

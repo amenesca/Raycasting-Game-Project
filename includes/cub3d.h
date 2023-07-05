@@ -6,7 +6,7 @@
 /*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:07:36 by amenesca          #+#    #+#             */
-/*   Updated: 2023/07/05 19:50:52 by femarque         ###   ########.fr       */
+/*   Updated: 2023/07/05 19:55:08 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,83 +108,34 @@ typedef struct s_data {
 	t_ray	ray;
 }	t_data;
 
-//validate_map
+char	*ft_strdup_no_endl(const char *s1);
 int		is_valid_char(char c);
 int		validade_char(t_map *map);
-void	fill_out_spaces(t_map *map);
-void	get_map_width(t_map *map);
-
-// treat_args_error.c
 int		treat_args_error(int argc, char *argv[]);
-
-// read_map.c
 int		count_lines(char *map_path);
-void	remove_endl(t_map *map);
 int		read_map(char *map_path, t_map *map);
-
-// get_colors_textures.c
 int		get_colors_textures(t_map *map);
-
-// validate_colors_textures.c
 int		validate_colors_textures(t_map *map);
-
-// split_textures.c
 int		split_textures(t_map *map);
-
-// split_colors.c
 int		split_colors(t_map *map);
-
-// test_colors.c
 int		test_colors(t_map *map);
 int		verify_quant(char ***color);
 int		only_numbers(char **color);
-
-//get_map.c
 int		get_map(t_map *map);
 int		get_n_validate(t_map *map);
-
-// utils
 int		ft_strcmp(const char *s1, const char *s2);
-char	*ft_strdup_no_endl(const char *s1);
-void	free_array(char **array);
 int		count_array(char **array);
 int		init_pointers(t_map *map);
-void	free_all(t_map *map);
 int		ft_error(char *s);
-
-// validate_map.c
 int		validate_map(t_map *map);
-
-//init_mlx.c
 int		init_data(t_data *data);
 int		init_mlx(t_data *data);
-void	ft_xpm_to_img(t_img *imgtex, t_map *map, t_mlx *mlx, int pos);
 int		close_game(t_mlx *game);
-
-//deal_key
 int		deal_key(int keycode, t_data *data);
 int		undeal_key(int keycode, t_data *data);
-
-//colors
-void	tex_color(t_data *data, int x);
 int		divide_color_by_value(int color, int value);
 int		get_pixel_color(t_img *img, int x, int y);
-
-//movement
-void	movement_y(t_data *data);
-void	movement_x(t_data *data);
-void	mov_camera(t_data *data);
-
-//free_functions
-void	free_basic(t_map *map);
-void	free_text_col(t_map *map);
-void	free_text_col_array(t_map *map);
-void	free_ceil_floor(t_map *map);
-
-//raycasting
 int		get_info(t_data *data);
-void	get_hex_colors(t_data *data);
-void	put_ceil_floor(t_data *data);
 int		divide_color_by_value(int color, int value);
 int		game(t_data *data);
 void	raycaster(t_data *data);
@@ -194,5 +145,21 @@ void	calculate3(t_ray *ray, t_map *map);
 void	calculate2(t_ray *ray);
 void	calculate1(t_ray *ray, int x);
 void	choose_texture(t_data *data);
+void	fill_out_spaces(t_map *map);
+void	get_map_width(t_map *map);
+void	remove_endl(t_map *map);
+void	free_array(char **array);
+void	free_all(t_map *map);
+void	ft_xpm_to_img(t_img *imgtex, t_map *map, t_mlx *mlx, int pos);
+void	tex_color(t_data *data, int x);
+void	movement_y(t_data *data);
+void	movement_x(t_data *data);
+void	mov_camera(t_data *data);
+void	free_basic(t_map *map);
+void	free_text_col(t_map *map);
+void	free_text_col_array(t_map *map);
+void	free_ceil_floor(t_map *map);
+void	get_hex_colors(t_data *data);
+void	put_ceil_floor(t_data *data);
 
 #endif

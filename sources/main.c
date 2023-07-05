@@ -25,11 +25,6 @@ int main(int argc, char *argv[])
 		return (-1);
 	if (get_n_validate(&data.map) != 0)
 		return (-1);
-//	print_array(data.map.file_read);
-	print_array(data.map.textures);
-/*	print_array(data.map.colors);
-	print_array(data.map.map);
-	print_array(data.map.remap);*/
 	
 	get_info(&data);
 	init_data(&data);

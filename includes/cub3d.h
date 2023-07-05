@@ -69,11 +69,11 @@ typedef struct s_mlxdata
 
 typedef struct s_ray
 {
-	long double		playerpos[2];
+	double		playerpos[2];
 	double		dir[2];
 	double		move_v;
 	double		move_h;
-	long double		plane[2];
+	double		plane[2];
 	int			mapX;
 	int			mapY;
 	int			hit;
@@ -95,11 +95,12 @@ typedef struct s_ray
 	double		oldPlaneX;
 	double		wallX;
 	int			texX;
+	int			texY;
 	double		scale;
 	double		texPos;
 	int			ceil_color;
 	int			floor_color;
-	long double moveSpeed;
+	double moveSpeed;
 	double rotSpeed;
 	double turn;
 } t_ray;

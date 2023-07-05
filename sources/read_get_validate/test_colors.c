@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_colors.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/05 13:55:28 by femarque          #+#    #+#             */
+/*   Updated: 2023/07/05 13:57:02 by femarque         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3d.h"
 
-static int test_values(int *colors)
+static int	test_values(int *colors)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 3)
@@ -14,10 +26,10 @@ static int test_values(int *colors)
 	return (0);
 }
 
-int only_numbers(char **color)
+int	only_numbers(char **color)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -35,10 +47,10 @@ int only_numbers(char **color)
 	return (0);
 }
 
-static int validate_ceiling(t_map *map)
+static int	validate_ceiling(t_map *map)
 {
-	int i;
-	char **color;
+	int		i;
+	char	**color;
 
 	color = ft_split(map->colors[1], ',');
 	if (verify_quant(&color) > 0)
@@ -59,10 +71,10 @@ static int validate_ceiling(t_map *map)
 	return (0);
 }
 
-static int validate_floor(t_map *map)
+static int	validate_floor(t_map *map)
 {
-	int i;
-	char **color;
+	int		i;
+	char	**color;
 
 	color = ft_split(map->colors[0], ',');
 	if (verify_quant(&color) != 0)
@@ -83,7 +95,7 @@ static int validate_floor(t_map *map)
 	return (0);
 }
 
-int test_colors(t_map *map)
+int	test_colors(t_map *map)
 {
 	map->ceiling = NULL;
 	map->floor = NULL;

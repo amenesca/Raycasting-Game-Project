@@ -6,13 +6,13 @@
 /*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 19:08:19 by femarque          #+#    #+#             */
-/*   Updated: 2023/07/04 16:20:08 by femarque         ###   ########.fr       */
+/*   Updated: 2023/07/05 14:49:09 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static void set_plane(char c, t_ray *ray)
+static void	set_plane(char c, t_ray *ray)
 {
 	if (c == 'N')
 	{
@@ -36,7 +36,7 @@ static void set_plane(char c, t_ray *ray)
 	}
 }
 
-static void set_dir(char c, t_ray *ray)
+static void	set_dir(char c, t_ray *ray)
 {
 	if (c == 'N')
 	{
@@ -60,7 +60,7 @@ static void set_dir(char c, t_ray *ray)
 	}
 }
 
-static int is_player(char c, t_ray *ray)
+static int	is_player(char c, t_ray *ray)
 {
 	if (c == 'N')
 	{
@@ -89,10 +89,10 @@ static int is_player(char c, t_ray *ray)
 	return (0);
 }
 
-static int get_init_pos(t_data *data)
+static int	get_init_pos(t_data *data)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	y = 0;
 	while (data->map.map[y])
@@ -102,8 +102,8 @@ static int get_init_pos(t_data *data)
 		{
 			if (is_player(data->map.map[y][x], &data->ray))
 			{
-				data->ray.playerpos[0] = x + 0.5; //existem motivos para o +0.5
-				data->ray.playerpos[1] = y + 0.5; //existem motivos para o +0.5
+				data->ray.playerpos[0] = x;
+				data->ray.playerpos[1] = y;
 				return (0);
 			}
 			x++;
@@ -113,7 +113,7 @@ static int get_init_pos(t_data *data)
 	return (1);
 }
 
-int get_info(t_data *data)
+int	get_info(t_data *data)
 {
 	get_init_pos(data);
 	get_hex_colors(data);

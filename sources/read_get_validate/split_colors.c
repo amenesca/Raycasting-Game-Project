@@ -1,27 +1,39 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   split_colors.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/05 13:53:13 by femarque          #+#    #+#             */
+/*   Updated: 2023/07/05 13:53:52 by femarque         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3d.h"
 
-static int is_colors(char *line)
+static int	is_colors(char *line)
 {
-	if (ft_strcmp(line, "C") == 0\
- || ft_strcmp(line, "F") == 0)
+	if (ft_strcmp(line, "C") == 0 \
+	|| ft_strcmp(line, "F") == 0)
 	{
 		return (1);
 	}
 	return (0);
 }
 
-static int validate_colors(char **color)
+static int	validate_colors(char **color)
 {
 	if (is_colors(color[0]) && count_array(color) == 2)
 		return (0);
 	return (1);
 }
 
-int split_colors(t_map *map)
+int	split_colors(t_map *map)
 {
-	int i;
-	int error_flag;
-	char **splited;
+	int		i;
+	int		error_flag;
+	char	**splited;
 
 	i = 0;
 	error_flag = 0;

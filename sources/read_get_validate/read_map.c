@@ -6,7 +6,7 @@
 /*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 19:39:38 by amenesca          #+#    #+#             */
-/*   Updated: 2023/06/19 18:09:53 by femarque         ###   ########.fr       */
+/*   Updated: 2023/07/05 13:52:58 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	count_lines(char *map_path)
 {
-	int	i;
-	int	fd;
-	char *buff;
+	int		i;
+	int		fd;
+	char	*buff;
 
 	fd = open(map_path, O_RDONLY);
 	if (fd == -1)
@@ -37,13 +37,13 @@ int	count_lines(char *map_path)
 	return (i);
 }
 
-void remove_endl(t_map *map)
+void	remove_endl(t_map *map)
 {
-	int i;
-	char **map_read;
+	int		i;
+	char	**map_read;
 
 	i = 0;
-	map_read = (char **)ft_calloc( (map->file_lines + 2), sizeof(char *));
+	map_read = (char **)ft_calloc((map->file_lines + 2), sizeof(char *));
 	while (i < map->file_lines)
 	{
 		map_read[i] = ft_strdup_no_endl(map->file_read[i]);
@@ -54,7 +54,7 @@ void remove_endl(t_map *map)
 	map->file_read = map_read;
 }
 
-static int read_map_error(t_map *map)
+static int	read_map_error(t_map *map)
 {
 	if (map->file_lines == -1)
 	{
@@ -72,16 +72,16 @@ static int read_map_error(t_map *map)
 
 int	read_map(char *map_path, t_map *map)
 {
-	int i;
-	int fd;
+	int	i;
+	int	fd;
 
 	i = 0;
 	fd = open(map_path, O_RDONLY);
 	map->file_lines = count_lines(map_path);
 	if (read_map_error(map) > 0)
 		return (1);
-	map->file_read = (char **)ft_calloc(sizeof(char *),\
- (map->file_lines + 2));
+	map->file_read = (char **)ft_calloc(sizeof(char *), \
+	(map->file_lines + 2));
 	while (i < map->file_lines)
 	{
 		map->file_read[i] = get_next_line(fd);

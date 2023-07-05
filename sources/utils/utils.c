@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amenesca <amenesca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:36:05 by amenesca          #+#    #+#             */
-/*   Updated: 2023/05/23 16:12:40 by maragao          ###   ########.rio      */
+/*   Updated: 2023/07/05 15:37:50 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ char	*ft_strdup_no_endl(const char *s1)
 	return ((char *)(s));
 }
 
-void free_array(char **array)
+void	free_array(char **array)
 {
-	int i; 
+	int	i;
 
 	i = 0;
 	while (array[i] != NULL)
@@ -68,9 +68,9 @@ void free_array(char **array)
 	}
 }
 
-int count_array(char **array)
+int	count_array(char **array)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (array[i] != NULL)

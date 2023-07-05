@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validate_colors_textures.c                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/05 13:57:20 by femarque          #+#    #+#             */
+/*   Updated: 2023/07/05 13:58:13 by femarque         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../.././includes/cub3d.h"
 
-static int treat_free_errors(int error, t_map *map)
+static int	treat_free_errors(int error, t_map *map)
 {
 	if (error == 1)
 	{
@@ -16,11 +28,11 @@ static int treat_free_errors(int error, t_map *map)
 		return (0);
 }
 
-static int check_textures_path(t_map *map)
+static int	check_textures_path(t_map *map)
 {
 	int	i;
-	int error;
-	int fd;
+	int	error;
+	int	fd;
 
 	error = 0;
 	i = -1;
@@ -43,20 +55,20 @@ static int check_textures_path(t_map *map)
 
 int	validate_colors_textures(t_map *map)
 {
-	int i;
-	int error;
+	int	i;
+	int	error;
 
 	error = 0;
 	i = 0;
 	if (split_textures(map) > 0)
 		error = 1;
 	if (split_colors(map) > 0)
-		error = 2; 
+		error = 2;
 	error = check_textures_path(map);
 	while (i < 2)
 	{
 		if (map->colors[i++] == NULL)
 			error = 2;
 	}
-	return	(treat_free_errors(error, map));
+	return (treat_free_errors(error, map));
 }

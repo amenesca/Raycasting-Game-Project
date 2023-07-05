@@ -6,7 +6,7 @@
 /*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 19:08:19 by femarque          #+#    #+#             */
-/*   Updated: 2023/07/05 13:06:17 by femarque         ###   ########.fr       */
+/*   Updated: 2023/07/05 14:49:09 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,8 @@ static int	get_init_pos(t_data *data)
 		{
 			if (is_player(data->map.map[y][x], &data->ray))
 			{
-				data->ray.playerpos[0] = x + 0.5;
-				data->ray.playerpos[1] = y + 0.5;
+				data->ray.playerpos[0] = x;
+				data->ray.playerpos[1] = y;
 				return (0);
 			}
 			x++;

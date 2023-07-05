@@ -6,7 +6,7 @@
 /*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 13:27:31 by femarque          #+#    #+#             */
-/*   Updated: 2023/07/05 13:35:42 by femarque         ###   ########.fr       */
+/*   Updated: 2023/07/05 15:06:07 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,9 @@ void	calculate4(t_ray *ray)
 	else
 		ray->perp_wall = (ray->sideY - ray->deltaY);
 	ray->line_height = (int)(screenHeight / ray->perp_wall);
-	ray->draw_start = 0;
+	ray->draw_start = -ray->line_height / 2 + screenHeight / 2;
+	if (ray->draw_start < 0)
+		ray->draw_start = 0;
 	ray->draw_end = ray->line_height / 2 + screenHeight / 2;
 	if (ray->draw_end >= screenHeight)
 		ray->draw_end = screenHeight - 1;

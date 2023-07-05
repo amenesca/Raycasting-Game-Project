@@ -6,7 +6,7 @@
 /*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:07:36 by amenesca          #+#    #+#             */
-/*   Updated: 2023/07/05 14:09:35 by femarque         ###   ########.fr       */
+/*   Updated: 2023/07/05 14:54:55 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,6 @@ int		validate_map(t_map *map);
 int		init_data(t_data *data);
 int		init_mlx(t_data *data);
 void	ft_xpm_to_img(t_img *imgtex, t_map *map, t_mlx *mlx, int pos);
-int		key_hook(int keycode, t_mlx *game);
 int		close_game(t_mlx *game);
 
 //deal_key

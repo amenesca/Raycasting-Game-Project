@@ -17,12 +17,12 @@ static void	set_plane(char c, t_ray *ray)
 	if (c == 'N')
 	{
 		ray->plane[0] = 0;
-		ray->plane[1] = -0.66;
+		ray->plane[1] = 0.66;
 	}
 	else if (c == 'S')
 	{
 		ray->plane[0] = 0;
-		ray->plane[1] = 0.66;
+		ray->plane[1] = +0.66;
 	}
 	else if (c == 'W')
 	{
@@ -102,8 +102,9 @@ static int	get_init_pos(t_data *data)
 		{
 			if (is_player(data->map.map[y][x], &data->ray))
 			{
-				data->ray.playerpos[0] = x;
-				data->ray.playerpos[1] = y;
+				data->ray.playerpos[0] = y + 0.5;
+				data->ray.playerpos[1] = x + 0.5;
+				data->map.map[y][x] = '0';
 				return (0);
 			}
 			x++;

@@ -21,9 +21,9 @@ void	movement_y(t_data *data)
 	(data->ray.dir[0] * data->ray.move_speed);
 	nextpos_y = data->ray.playerpos[1] + data->ray.move_v * \
 	(data->ray.dir[1] * data->ray.move_speed);
-	if (data->map.map[(int)nextpos_x][(int)data->ray.playerpos[1]] != '1')
+	if (data->map.map[(int)nextpos_x][(int)data->ray.playerpos[1]] == '0')
 		data->ray.playerpos[0] = nextpos_x;
-	if (data->map.map[(int)data->ray.playerpos[0]][(int)nextpos_y] != '1')
+	if (data->map.map[(int)data->ray.playerpos[0]][(int)nextpos_y] == '0')
 		data->ray.playerpos[1] = nextpos_y;
 }
 
@@ -36,9 +36,9 @@ void	movement_x(t_data *data)
 	(data->ray.plane[0] * data->ray.move_speed);
 	nextpos_y = data->ray.playerpos[1] + data->ray.move_h * \
 	(data->ray.plane[1] * data->ray.move_speed);
-	if (data->map.map[(int)nextpos_x][(int)data->ray.playerpos[1]] != '1')
+	if (data->map.map[(int)nextpos_x][(int)data->ray.playerpos[1]] == '0')
 		data->ray.playerpos[0] = nextpos_x;
-	if (data->map.map[(int)data->ray.playerpos[0]][(int)nextpos_y] != '1')
+	if (data->map.map[(int)data->ray.playerpos[0]][(int)nextpos_y] == '0')
 		data->ray.playerpos[1] = nextpos_y;
 }
 
@@ -68,9 +68,9 @@ int	deal_key(int keycode, t_data *data)
 	else if (keycode == D)
 		data->ray.move_h = 1;
 	else if (keycode == RIGHT)
-		data->ray.turn = 1;
-	else if (keycode == LEFT)
 		data->ray.turn = -1;
+	else if (keycode == LEFT)
+		data->ray.turn = 1;
 	else if (keycode == KEY_ESC)
 		close_game(&data->mlx);
 	return (0);

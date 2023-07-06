@@ -1,106 +1,22 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: amenesca <amenesca@student.42.rio>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/07 14:48:20 by amenesca          #+#    #+#             */
-/*   Updated: 2022/06/20 11:31:44 by amenesca         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "./libft.h"
 
-#include "get_next_line.h"
-
-static char	*read_to_buff(int fd, char *join)
+char *get_next_line(int fd)
 {
-	char	*buff;
-	int		bytes;
-
-	buff = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!buff)
-		return (NULL);
-	bytes = 1;
-	while (!my_strchr(join, '\n') && bytes)
-	{
-		bytes = read(fd, buff, BUFFER_SIZE);
-		if (bytes == -1)
-		{
-			free(buff);
-			return (NULL);
-		}
-		buff[bytes] = '\0';
-		if (!join)
-		{
-			join = malloc(1 * sizeof(char));
-			*join = '\0';
-		}
-		join = my_strjoin(join, buff);
-	}
-	free(buff);
-	return (join);
-}
-
-static char	*strdupline(char *join)
-{
-	size_t	i;
-	char	*s;
-
-	i = 0;
-	if (!join[i])
-		return (NULL);
-	while (join[i] && join[i] != '\n')
-		i++;
-	s = malloc((i + 2) * sizeof(char));
-	if (!s)
-		return (NULL);
-	i = 0;
-	while (join[i] && join[i] != '\n')
-	{
-		s[i] = join[i];
-		i++;
-	}
-	if (join[i] == '\n')
-		s[i++] = '\n';
-	s[i] = '\0';
-	return (s);
-}
-
-static char	*set_join(char *join)
-{
-	size_t	i;
-	size_t	j;
-	char	*s;
-
-	i = size_of_line(join);
-	if (!join[i])
-	{
-		free (join);
-		return (NULL);
-	}
-	s = malloc((my_strlen(join) - i + 1) * sizeof(char));
-	if (!s)
-		return (NULL);
-	i++;
-	j = 0;
-	while (join[i])
-		s[j++] = join[i++];
-	s[j] = '\0';
-	free(join);
-	return (s);
-}
-
-char	*get_next_line(int fd)
-{
-	char		*line;
-	static char	*join;
-
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
-	join = read_to_buff(fd, join);
-	if (!join)
-		return (NULL);
-	line = strdupline(join);
-	join = set_join(join);
-	return (line);
+    int     i = 0;
+    int     rd = 0;
+    char    character;
+    char    *buffer = malloc(100000);
+    
+    if (BUFFER_SIZE <= 0)
+        return (NULL);
+    while ((rd = read(fd, &character, BUFFER_SIZE - BUFFER_SIZE + 1)) > 0)
+    {
+        buffer[i++] = character;
+        if (character == '\n')
+            break ;
+    }
+    buffer[i] =  '\0';
+    if (rd == -1 || i == 0 || (!buffer[i - 1] && !rd))
+        return (free(buffer), NULL);
+    return(buffer);
 }

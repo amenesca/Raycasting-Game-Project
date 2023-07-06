@@ -28,7 +28,7 @@ static size_t	nbsize(int n)
 }
 
 char	*ft_itoa(int n)
-{	
+{
 	char	*str;
 	int		i;
 	long	x;

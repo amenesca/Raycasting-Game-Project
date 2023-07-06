@@ -6,7 +6,7 @@
 /*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:12:21 by femarque          #+#    #+#             */
-/*   Updated: 2023/07/05 15:56:35 by femarque         ###   ########.fr       */
+/*   Updated: 2023/07/06 14:11:09 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	init_data(t_data *data)
 	data->ray.move_v = 0;
 	data->ray.move_h = 0;
 	data->ray.turn = 0;
-	data->mlx.finish = 0;
 	init_mlx(data);
 	return (0);
 }
@@ -57,7 +56,7 @@ int	init_mlx(t_data *data)
 	return (0);
 }
 
-void free_mlx(t_mlx *game)
+void	free_mlx(t_mlx *game)
 {
 	mlx_destroy_image(game->mlx, game->text_n.img);
 	mlx_destroy_image(game->mlx, game->text_s.img);

@@ -58,6 +58,7 @@ int	init_mlx(t_data *data)
 
 int	close_game(t_mlx *game)
 {
+//	free_mlx()
 	mlx_destroy_window(game->mlx, game->mlx_win);
 	free(game->mlx);
 	exit(0);

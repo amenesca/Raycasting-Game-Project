@@ -1,5 +1,5 @@
 /* XPM */
-static char * sandbrick_wall_xpm[] = {
+static char * brick_candle[] = {
 "64 64 17 1",
 " 	c #433F12",
 ".	c #B8B8B8",

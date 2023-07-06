@@ -59,9 +59,12 @@ void	raycaster(t_data *data)
 
 int	game(t_data *data)
 {
-	raycaster(data);
-	movement_y(data);
-	movement_x(data);
-	mov_camera(data);
+	if (data->mlx.finish == 0)
+	{
+		raycaster(data);
+		movement_y(data);
+		movement_x(data);
+		mov_camera(data);
+	}
 	return (0);
 }

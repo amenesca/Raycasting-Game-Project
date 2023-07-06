@@ -130,7 +130,7 @@ int		ft_error(char *s);
 int		validate_map(t_map *map);
 int		init_data(t_data *data);
 int		init_mlx(t_data *data);
-int		close_game(t_mlx *game);
+int		close_game(t_data *data);
 int		deal_key(int keycode, t_data *data);
 int		undeal_key(int keycode, t_data *data);
 int		divide_color_by_value(int color, int value);

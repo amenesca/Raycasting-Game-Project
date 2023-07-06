@@ -72,7 +72,7 @@ int	deal_key(int keycode, t_data *data)
 	else if (keycode == LEFT)
 		data->ray.turn = 1;
 	else if (keycode == KEY_ESC)
-		close_game(&data->mlx);
+		close_game(data);
 	return (0);
 }
 

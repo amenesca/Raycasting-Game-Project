@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 	init_data(&data);
 	mlx_hook(data.mlx.mlx_win, 2, (1L << 0), deal_key, &data);
 	mlx_hook(data.mlx.mlx_win, 3, (1L << 1), undeal_key, &data);
-	mlx_hook(data.mlx.mlx_win, 17, (1L << 2), close_game, &data.mlx);
+	mlx_hook(data.mlx.mlx_win, 17, (1L << 2), close_game, &data);
 	mlx_loop_hook(data.mlx.mlx, &game, &data);
 	mlx_loop(data.mlx.mlx);
 	free_all(&data.map);

@@ -10,18 +10,10 @@
 #                                                                              #
 # **************************************************************************** #
 
-detected_OS := $(shell uname)
-ifeq ($(detected_OS),Linux)
 MLXFLAGS	=	-L ./mlx_linux/ -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 RUN		=	make -s -C ./mlx_linux/
 CLEAN	=	make clean -s -C ./mlx_linux/
 CFLAGS	= 	-Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3
-else
-MLXFLAGS 	=	-L ./mlx/ -Lmlx -lmlx -framework OpenGL -framework AppKit
-RUN 	=	make -s -C ./mlx/
-CLEAN 	=	make clean -s -C ./mlx/
-CFLAGS	=	-Wall -Wextra -Werror -Imlx
-endif
 
 NAME 		= cub3d
 

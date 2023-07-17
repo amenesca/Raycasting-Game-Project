@@ -26,12 +26,12 @@ SRCS		= ./sources/main.c ./sources/treat_initial_errors/treat_args_errors.c ./so
  ./sources/init_mlx/init_mlx.c ./sources/raycasting/get_info.c ./sources/free_functions/free_basic.c\
  ./sources/read_get_validate/test_colors_aux.c ./sources/raycasting/raycasting_no_textures.c ./sources/raycasting/raycaster.c
 
+.c.o:
+			@cc $(CFLAGS) -c $< -o $(<:.c=.o) -I ./includes
+
 OBJS		= $(SRCS:.c=.o)
 
 RM			= rm -f
-
-.c.o:
-			@cc $(CFLAGS) -c $< -o $(<:.c=.o) -I ./includes
 
 $(NAME):	$(OBJS)
 				@make -C ./libft
